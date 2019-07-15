@@ -5,22 +5,20 @@
   
 
   
-  <title>jsNote1 | Hexo</title>
+  <title>jsNote5 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="区分好&amp;lt;script&amp;gt;标签中defer和async两个属性的区别，两个属性都是异步加载文档，只是defer是加载后不立刻执行，等HTML解析完后再执行。async是异步加载，但加载完后会停止解析HTML文档等到JavaScript文件执行完再继续解析HTML。    图片来源于网络   &amp;lt;noscript&amp;gt; 这个标签的内容只有在脚本被禁用或不被浏览器支持的时候才会显示出来">
+  <meta name="description" content="函数表达式 闭包是指有权访问另一个函数作用域中的变量的函数。 后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。 作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。 闭包只能取得包含函数中任何变量的最后一个值。 匿名函数的执行环境具有全局性，因此其this对象通常指向window。 JavaScript中没有私有成员的概">
 <meta name="keywords" content="JavaScriptLearning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsNote1">
-<meta property="og:url" content="http://yoursite.com/2019/07/09/jsNote1/index.html">
+<meta property="og:title" content="jsNote5">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/jsNote5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="区分好&amp;lt;script&amp;gt;标签中defer和async两个属性的区别，两个属性都是异步加载文档，只是defer是加载后不立刻执行，等HTML解析完后再执行。async是异步加载，但加载完后会停止解析HTML文档等到JavaScript文件执行完再继续解析HTML。    图片来源于网络   &amp;lt;noscript&amp;gt; 这个标签的内容只有在脚本被禁用或不被浏览器支持的时候才会显示出来">
+<meta property="og:description" content="函数表达式 闭包是指有权访问另一个函数作用域中的变量的函数。 后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。 作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。 闭包只能取得包含函数中任何变量的最后一个值。 匿名函数的执行环境具有全局性，因此其this对象通常指向window。 JavaScript中没有私有成员的概">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/07/09/jsNote1/1.jpg">
-<meta property="og:updated_time" content="2019-07-09T13:47:11.161Z">
+<meta property="og:updated_time" content="2019-07-15T13:34:42.399Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsNote1">
-<meta name="twitter:description" content="区分好&amp;lt;script&amp;gt;标签中defer和async两个属性的区别，两个属性都是异步加载文档，只是defer是加载后不立刻执行，等HTML解析完后再执行。async是异步加载，但加载完后会停止解析HTML文档等到JavaScript文件执行完再继续解析HTML。    图片来源于网络   &amp;lt;noscript&amp;gt; 这个标签的内容只有在脚本被禁用或不被浏览器支持的时候才会显示出来">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/09/jsNote1/1.jpg">
+<meta name="twitter:title" content="jsNote5">
+<meta name="twitter:description" content="函数表达式 闭包是指有权访问另一个函数作用域中的变量的函数。 后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。 作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。 闭包只能取得包含函数中任何变量的最后一个值。 匿名函数的执行环境具有全局性，因此其this对象通常指向window。 JavaScript中没有私有成员的概">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jsNote1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jsNote5" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/09/jsNote1/" class="article-date">
-  <time datetime="2019-07-09T13:38:41.000Z" itemprop="datePublished">2019-07-09</time>
+    <a href="/2019/07/15/jsNote5/" class="article-date">
+  <time datetime="2019-07-15T13:34:06.000Z" itemprop="datePublished">2019-07-15</time>
 </a>
     
   </div>
@@ -81,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jsNote1
+      jsNote5
     </h1>
   
 
@@ -89,30 +87,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>区分好<code>&lt;script&gt;</code>标签中defer和async两个属性的区别，两个属性都是异步加载文档，只是defer是加载后不立刻执行，等HTML解析完后再执行。async是异步加载，但加载完后会停止解析HTML文档等到JavaScript文件执行完再继续解析HTML。</li>
-</ul>
-<p><img src="/2019/07/09/jsNote1/1.jpg" alt="示意图"></p>
-<blockquote>
-<p>图片来源于网络</p>
-</blockquote>
-<ul>
-<li><p><code>&lt;noscript&gt;</code></p>
-<p>这个标签的内容只有在脚本被禁用或不被浏览器支持的时候才会显示出来，里面可以包含一切能够出现在<code>&lt;body&gt;</code>元素中的元素。</p>
-<p>可以用这个标签在JavaScript不被浏览器支持的时候提醒用户。否则里面的内容永远不会出现在页面中。</p>
-</li>
-<li><p>严格模式</p>
-<p>要在整个脚本中启用严格模式，可以在顶部添加代码：<code>&quot;use strict&quot;;</code>。这是一个编译指示，用于告诉支持的JavaScript引擎切换到严格模式。</p>
-<p>也可以在函数内部的上方包含这条编译指示，指定函数在严格模式下执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function doSomething()&#123;</span><br><span class="line">    &quot;use strict&quot;;</span><br><span class="line">    //函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+        <h4 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h4><ul>
+<li>闭包是指有权访问另一个函数作用域中的变量的函数。</li>
+<li>后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。</li>
+<li>作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。</li>
+<li>闭包只能取得包含函数中任何变量的最后一个值。</li>
+<li>匿名函数的执行环境具有全局性，因此其<code>this</code>对象通常指向<code>window</code>。</li>
+<li>JavaScript中没有私有成员的概念，所有对象属性都是公有的。不管在任何函数中定义的变量，都可以认为是私有变量。有权访问私有变量和私有函数的公有方法称为特权方法。</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/jsNote1/" data-id="cjy4fjovx0008m0uts8hmx45q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjy4fjovt0004m0ut8dfa4atd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -123,19 +110,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/07/10/jsNote2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          jsNote2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/09/blog1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/14/随笔/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">学习安装配置的心得</div>
+      <div class="article-nav-title">随笔</div>
     </a>
   
 </nav>
