@@ -62,6 +62,83 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6one" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/18/ES6one/" class="article-date">
+  <time datetime="2019-07-18T13:56:06.000Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/18/ES6one/">ES6one</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p><code>let</code></p>
+<p>由<code>let</code>声明的变量，只在<code>let</code>所在的代码块上有效。</p>
+<p>在循环中，<code>JavaScript</code>引擎内部会记住上一轮循环的值。设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。</p>
+<p><code>let</code>声明的变量一定要在声明后使用，否则报错。</p>
+<p><code>ES6</code>明确规定，如果区块中存在<code>let</code>和<code>const</code>命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。（暂时性死区本质：只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。）</p>
+<p>不允许重复声明。</p>
+<p>原本想实现块级作用域需要立即执行函数表达式，有了新功能用<code>let</code>就可以实现。</p>
+<p>应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</p>
+<p>如果没有大括号，JavaScript 引擎就认为不存在块级作用域。</p>
+</li>
+<li><p><code>const</code></p>
+<p><code>const</code>声明一个只读的常量。一旦声明，常量的值就不能改变。</p>
+<p><code>const</code>一旦声明变量，就必须立即初始化，不能留到以后赋值。</p>
+<p>只在声明所在的块级作用域内有效。</p>
+<p>用<code>const</code>定义的引用类型的数据，只能保证指针不变，但是指向的内存空间的数据结构就不一定了。（可以改指针指向的数据，但是不能改指向的空间）。但是可以使用<code>Object.freeze</code>方法冻结对象以及对象的属性，使得无法对对象的属性做修改。</p>
+</li>
+<li><p>顶层对象的属性</p>
+<p><code>var</code>命令和<code>function</code>命令声明的全局变量，依旧是顶层对象（<code>window</code>）的属性；<code>let</code>命令、<code>const</code>命令、<code>class</code>命令声明的全局变量，不属于顶层对象的属性。</p>
+</li>
+<li><p><code>globalThis</code>对象</p>
+<p>JavaScript 语言存在一个顶层对象，它提供全局环境（即全局作用域），所有代码都是在这个环境中运行。但是在不同实现里面是不统一的。</p>
+<p>现在规定可以用<code>globalThis</code>对象来取得顶层对象，只想全局环境下的<code>this</code>。</p>
+</li>
+<li><p><code>...</code>扩展运算符</p>
+<p>作用：将一个数组转为用逗号分隔的参数序列。</p>
+<p>参考链接：<a href="https://www.cnblogs.com/wangyunhui/p/7511615.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangyunhui/p/7511615.html</a></p>
+</li>
+<li><p>解构赋值</p>
+<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构。</p>
+<p>只要等号两边的模式相同，左边的变量就会被赋予对应的值。</p>
+<p>如果解构不成功，变量的值就等于<code>undefined</code>。</p>
+<p>另一种情况是不完全解构，即等号左边的模式，只匹配一部分的等号右边的数组。这种情况下，解构依然可以成功。</p>
+<p>如果等号的右边不是数组（或者严格地说，不是可遍历的结构，参见《Iterator》一章），那么将会报错。</p>
+<p>对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。</p>
+<p>解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。</p>
+<p>由于<code>undefined</code>和<code>null</code>无法转为对象，所以对它们进行解构赋值，都会报错。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/18/ES6one/" data-id="cjy8qnnub00000wutep0h1ynk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-jsNote6" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/17/jsNote6/" class="article-date">
@@ -172,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/17/jsNote6/" data-id="cjy7bgwzk0008w4utfru4ce9d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/17/jsNote6/" data-id="cjy8qnnyf000c0wut7ozr2c3j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -310,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/canvasLearning/" data-id="cjy7bgx0m000mw4utly9qnnez" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/canvasLearning/" data-id="cjy8qnnza000n0wutgipgzs2y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -356,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjy7bgwzi0005w4utg9nddfbm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjy8qnnwv000b0wutt18461yz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -398,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/随笔/" data-id="cjy7bgx08000iw4uty6g8q6dm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/14/随笔/" data-id="cjy8qnnz6000l0wuti3p37wbc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
@@ -452,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/12/jsNote4/" data-id="cjy7bgwzh0004w4utktonvjsr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/12/jsNote4/" data-id="cjy8qnnwq00060wutoh8kdxia" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -562,7 +639,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/11/jsNote3/" data-id="cjy7bgx07000hw4utcmeq8zo3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/11/jsNote3/" data-id="cjy8qnnws00070wutjopgyvhh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -657,7 +734,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/10/jsNote2/" data-id="cjy7bgwzl0009w4utuiqr9opu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/10/jsNote2/" data-id="cjy8qnnz2000k0wut912owprx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -714,7 +791,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/jsNote1/" data-id="cjy7bgwzg0003w4utvgwqf67y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/09/jsNote1/" data-id="cjy8qnnwu00080wuthi6rgjy3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -781,7 +858,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/blog1/" data-id="cjy7bgwz30000w4utnzanvwye" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/09/blog1/" data-id="cjy8qnnwl00030wutjixzdmgu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/foot/">foot</a></li></ul>
@@ -793,56 +870,12 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/hello-world/" class="article-date">
-  <time datetime="2019-07-09T02:08:59.176Z" itemprop="datePublished">2019-07-09</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/hello-world/" data-id="cjy7bgwzc0001w4ut1ejcx961" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -855,7 +888,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li></ul>
     </div>
   </div>
 
@@ -865,7 +898,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
     </div>
   </div>
 
@@ -887,6 +920,10 @@
       <ul>
         
           <li>
+            <a href="/2019/07/18/ES6one/">ES6one</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/17/jsNote6/">jsNote6</a>
           </li>
         
@@ -900,10 +937,6 @@
         
           <li>
             <a href="/2019/07/14/随笔/">随笔</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/12/jsNote4/">jsNote4</a>
           </li>
         
       </ul>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6one | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="let 由let声明的变量，只在let所在的代码块上有效。 在循环中，JavaScript引擎内部会记住上一轮循环的值。设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。 let声明的变量一定要在声明后使用，否则报错。 ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。（暂时">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6one">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/ES6one/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="let 由let声明的变量，只在let所在的代码块上有效。 在循环中，JavaScript引擎内部会记住上一轮循环的值。设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。 let声明的变量一定要在声明后使用，否则报错。 ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。（暂时">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-18T13:56:49.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6one">
+<meta name="twitter:description" content="let 由let声明的变量，只在let所在的代码块上有效。 在循环中，JavaScript引擎内部会记住上一轮循环的值。设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。 let声明的变量一定要在声明后使用，否则报错。 ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。（暂时">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ES6one" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/18/ES6one/" class="article-date">
+  <time datetime="2019-07-18T13:56:06.000Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6one
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p><code>let</code></p>
+<p>由<code>let</code>声明的变量，只在<code>let</code>所在的代码块上有效。</p>
+<p>在循环中，<code>JavaScript</code>引擎内部会记住上一轮循环的值。设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。</p>
+<p><code>let</code>声明的变量一定要在声明后使用，否则报错。</p>
+<p><code>ES6</code>明确规定，如果区块中存在<code>let</code>和<code>const</code>命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。（暂时性死区本质：只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。）</p>
+<p>不允许重复声明。</p>
+<p>原本想实现块级作用域需要立即执行函数表达式，有了新功能用<code>let</code>就可以实现。</p>
+<p>应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</p>
+<p>如果没有大括号，JavaScript 引擎就认为不存在块级作用域。</p>
+</li>
+<li><p><code>const</code></p>
+<p><code>const</code>声明一个只读的常量。一旦声明，常量的值就不能改变。</p>
+<p><code>const</code>一旦声明变量，就必须立即初始化，不能留到以后赋值。</p>
+<p>只在声明所在的块级作用域内有效。</p>
+<p>用<code>const</code>定义的引用类型的数据，只能保证指针不变，但是指向的内存空间的数据结构就不一定了。（可以改指针指向的数据，但是不能改指向的空间）。但是可以使用<code>Object.freeze</code>方法冻结对象以及对象的属性，使得无法对对象的属性做修改。</p>
+</li>
+<li><p>顶层对象的属性</p>
+<p><code>var</code>命令和<code>function</code>命令声明的全局变量，依旧是顶层对象（<code>window</code>）的属性；<code>let</code>命令、<code>const</code>命令、<code>class</code>命令声明的全局变量，不属于顶层对象的属性。</p>
+</li>
+<li><p><code>globalThis</code>对象</p>
+<p>JavaScript 语言存在一个顶层对象，它提供全局环境（即全局作用域），所有代码都是在这个环境中运行。但是在不同实现里面是不统一的。</p>
+<p>现在规定可以用<code>globalThis</code>对象来取得顶层对象，只想全局环境下的<code>this</code>。</p>
+</li>
+<li><p><code>...</code>扩展运算符</p>
+<p>作用：将一个数组转为用逗号分隔的参数序列。</p>
+<p>参考链接：<a href="https://www.cnblogs.com/wangyunhui/p/7511615.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangyunhui/p/7511615.html</a></p>
+</li>
+<li><p>解构赋值</p>
+<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构。</p>
+<p>只要等号两边的模式相同，左边的变量就会被赋予对应的值。</p>
+<p>如果解构不成功，变量的值就等于<code>undefined</code>。</p>
+<p>另一种情况是不完全解构，即等号左边的模式，只匹配一部分的等号右边的数组。这种情况下，解构依然可以成功。</p>
+<p>如果等号的右边不是数组（或者严格地说，不是可遍历的结构，参见《Iterator》一章），那么将会报错。</p>
+<p>对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。</p>
+<p>解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。</p>
+<p>由于<code>undefined</code>和<code>null</code>无法转为对象，所以对它们进行解构赋值，都会报错。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/18/ES6one/" data-id="cjy8qnnub00000wutep0h1ynk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/17/jsNote6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jsNote6</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/18/ES6one/">ES6one</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/17/jsNote6/">jsNote6</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/canvasLearning/">canvasLearning</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/jsNote5/">jsNote5</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/14/随笔/">随笔</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
