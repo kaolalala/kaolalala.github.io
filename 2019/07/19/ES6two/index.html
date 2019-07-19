@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6two | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="模板字符串 可以使用反单引号`` 括住语句，在JavaScript语言中嵌入字符串，在字符串里面使用${}包住变量，是的字符串的使用更加方便。不需要用加号拼接字符串和变量。也可以嵌入其他语言，但是由于模板字符串里会自动转义字符，所以在使用\u和\x之类的字符可能会导致报错。为了解决这个问题，ES2018放松了对字符串的限制，对于转移出错的字符串返回undefined而不是报错。且在raw`属性里">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6two">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/ES6two/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="模板字符串 可以使用反单引号`` 括住语句，在JavaScript语言中嵌入字符串，在字符串里面使用${}包住变量，是的字符串的使用更加方便。不需要用加号拼接字符串和变量。也可以嵌入其他语言，但是由于模板字符串里会自动转义字符，所以在使用\u和\x之类的字符可能会导致报错。为了解决这个问题，ES2018放松了对字符串的限制，对于转移出错的字符串返回undefined而不是报错。且在raw`属性里">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/07/19/ES6two/ES6a.png">
+<meta property="og:updated_time" content="2019-07-19T14:41:21.654Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6two">
+<meta name="twitter:description" content="模板字符串 可以使用反单引号`` 括住语句，在JavaScript语言中嵌入字符串，在字符串里面使用${}包住变量，是的字符串的使用更加方便。不需要用加号拼接字符串和变量。也可以嵌入其他语言，但是由于模板字符串里会自动转义字符，所以在使用\u和\x之类的字符可能会导致报错。为了解决这个问题，ES2018放松了对字符串的限制，对于转移出错的字符串返回undefined而不是报错。且在raw`属性里">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/19/ES6two/ES6a.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ES6two" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/19/ES6two/" class="article-date">
+  <time datetime="2019-07-19T14:38:14.000Z" itemprop="datePublished">2019-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6two
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>模板字符串</p>
+<p>可以使用反单引号`` <code>括住语句，在JavaScript语言中嵌入字符串，在字符串里面使用</code>${}<code>包住变量，是的字符串的使用更加方便。不需要用加号拼接字符串和变量。也可以嵌入其他语言，但是由于模板字符串里会自动转义字符，所以在使用</code>\u<code>和</code>\x<code>之类的字符可能会导致报错。为了解决这个问题，ES2018放松了对字符串的限制，对于转移出错的字符串返回</code>undefined<code>而不是报错。且在</code>raw`属性里可以得到原字符串。这种对字符串转义的放松，只在标签模板解析字符串时生效，不是标签模板的场合，依然会报错。</p>
+</li>
+<li><p><code>rest</code>参数</p>
+<p><code>rest</code>参数表示函数的多余参数，形式为<code>...变量名</code>。这个参数是一个数组，有了这个参数就可以不用在函数里使用<code>arguments</code>了。且因为是多余的参数，所以在参数列表里只能放在最后，另外函数的<code>length</code>属性（表示函数期望接受的参数）也不包括<code>rest</code>参数。</p>
+</li>
+<li><p>箭头函数</p>
+<p>箭头函数一定程度上简化了函数的表达式。使用<code>=&gt;</code>符号，该符号前的是传进函数的参数（当不需要参数或有多个参数时用圆括号括住），符号后的是函数的返回值（如果函数体内不止一个语句，则使用大括号并使用<code>return</code>返回值）。如果返回的是对象的话，对象外面的大括号可能会被误会为代码块，导致出错，因此若要单纯返回对象在对象外加一层圆括号。</p>
+<p><img src="/2019/07/19/ES6two/ES6a.png" alt></p>
+<p>上图这个语法我有点疑惑，既然不需要返回值而且只有一句语句那为什么还要这么写呢，为什么不直接执行<code>doesNotReturn()</code>呢？等后面看看会不会接触到这种写法再说叭~</p>
+<p>箭头函数里的<code>this</code>和一般的<code>this</code>有点不同，往常函数里的<code>this</code>会随着函数执行的环境不同而不同，但是箭头函数的<code>this</code>在一开始定义的时候就固定了，在后面执行的时候<code>this</code>所指的和一开始定义时相同。</p>
+<p>原因是箭头函数没有自己的<code>this</code>，定义时的<code>this</code>就是箭头函数外层代码块的<code>this</code>。因此箭头函数不能作为构造函数，但是箭头函数会比较利于封装回调函数。</p>
+<p>箭头函数也可以用于嵌套函数，只是要注意代码可读性的问题。不要为了少些代码就疯狂使用嵌套的箭头函数，会被队友吐槽的哈哈。</p>
+<p>主要是记住箭头函数的语法和<code>this</code>的特殊性。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/19/ES6two/" data-id="cjya7osak0003v0uty65rfh1m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/18/ES6one/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ES6one</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/19/ES6two/">ES6two</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/18/ES6one/">ES6one</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/17/jsNote6/">jsNote6</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/canvasLearning/">canvasLearning</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/jsNote5/">jsNote5</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
