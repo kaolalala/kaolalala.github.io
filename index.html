@@ -62,6 +62,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6three" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/21/ES6three/" class="article-date">
+  <time datetime="2019-07-21T13:28:35.000Z" itemprop="datePublished">2019-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/21/ES6three/">ES6three</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>Symbol</p>
+<p>是一种ES6规定的新的数据类型。不能使用<code>new</code>运算符来构造，因为<code>Symbol</code>本身是值而不是对象。在创建<code>Symbol</code>值的时候，括号里的值可以用来作为该<code>Symbol</code>值的标识，但标识相同的<code>Symbol</code>值也不相等。</p>
+<p>每个<code>Symbol</code>都是独一无二的，因此适合用于实例对象添加新属性，可以避免覆盖掉原先原型里的属性等问题。</p>
+<p>将<code>Symbol</code>用作属性名时，不能使用点方法，需要使用方括号语法。因为点方法后面的属性名不能用变量表示，会被当成字符串，替换成方括号就能解决，方括号里可以使用变量。</p>
+<p><code>Sybmol</code>值作为属性名时，该属性是公开属性而不是私有属性。（这个概念还不是很清晰）</p>
+<p>使用<code>Symbol.for()</code>方法创建的值则是标识符相同的<code>Symbol</code>值相同。每使用这个方法创建值时都会先搜索是否有使用括号里的标识符且是<code>Symbol.for()</code>方法创建的<code>Symbol</code>值，若搜索到则使用那个值，搜索不到才创建新的一个。<code>Symbol.keyFor()</code>方法则返回使用<code>Symbol.for()</code>方法创建的<code>Symbol</code>值的标识符。</p>
+<p>还有很多<code>Symbol</code>的方法，有些还不能很好的理解，以后找机会再看~</p>
+</li>
+<li><p>Set</p>
+<p>感觉和集合很像，集合里的元素都是唯一的，<code>Set</code>里的数组元素也都是唯一的。可以使用数组转化为<code>Set</code>的方式去除掉数组里重复的对象。</p>
+<p>在<code>Set</code>里面，<code>NaN</code>和自身是相等的，这点和往常不同。</p>
+<p><code>WeakSet</code>里面只能存放对象，且垃圾回收机制不考虑<code>WeakSet</code>对该对象的引用。</p>
+</li>
+<li><p>Map</p>
+<p>对象里只能用字符串做键名，Map适合对象类似的结构但是它的键名可以是各种数据类型。</p>
+<p><code>WeakMap</code>和<code>WeakSet</code>很相似，只能用对象作为键名，也是垃圾回收机制不考虑<code>WeakSet</code>对该对象的引用。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/21/ES6three/" data-id="cjyczzu400000gwutf0kg7wwb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ES6two" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/19/ES6two/" class="article-date">
@@ -105,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/19/ES6two/" data-id="cjya7osak0003v0uty65rfh1m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/19/ES6two/" data-id="cjyczzu4x000dgwutr2fbpuqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
@@ -182,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/18/ES6one/" data-id="cjya7osa30000v0utve244lu2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/18/ES6one/" data-id="cjyczzu490001gwutxuzncujl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
@@ -304,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/17/jsNote6/" data-id="cjya7osay000fv0ut1r4kjhun" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/17/jsNote6/" data-id="cjyczzu51000ggwutdnm1p6dx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -442,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/canvasLearning/" data-id="cjya7osbd000mv0utblhls8vw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/canvasLearning/" data-id="cjyczzu56000kgwutypnonha5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -488,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjya7osaz000gv0uts55rn075" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjyczzu59000mgwutcl887zi1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -530,7 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/随笔/" data-id="cjya7osba000kv0utzfan3ta5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/14/随笔/" data-id="cjyczzu5f000qgwutssbj1qka" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
@@ -584,7 +641,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/12/jsNote4/" data-id="cjya7oscz000qv0ut1l2e4rjj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/12/jsNote4/" data-id="cjyczzu53000igwutxyqjvq18" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -694,7 +751,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/11/jsNote3/" data-id="cjya7osar0009v0ut7q5gdw45" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/11/jsNote3/" data-id="cjyczzu5b000ogwut38d0wf61" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -789,64 +846,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/10/jsNote2/" data-id="cjya7osb9000jv0ut4aisz97j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jsNote1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/jsNote1/" class="article-date">
-  <time datetime="2019-07-09T13:38:41.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/jsNote1/">jsNote1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>区分好<code>&lt;script&gt;</code>标签中defer和async两个属性的区别，两个属性都是异步加载文档，只是defer是加载后不立刻执行，等HTML解析完后再执行。async是异步加载，但加载完后会停止解析HTML文档等到JavaScript文件执行完再继续解析HTML。</li>
-</ul>
-<p><img src="/2019/07/09/jsNote1/1.jpg" alt="示意图"></p>
-<blockquote>
-<p>图片来源于网络</p>
-</blockquote>
-<ul>
-<li><p><code>&lt;noscript&gt;</code></p>
-<p>这个标签的内容只有在脚本被禁用或不被浏览器支持的时候才会显示出来，里面可以包含一切能够出现在<code>&lt;body&gt;</code>元素中的元素。</p>
-<p>可以用这个标签在JavaScript不被浏览器支持的时候提醒用户。否则里面的内容永远不会出现在页面中。</p>
-</li>
-<li><p>严格模式</p>
-<p>要在整个脚本中启用严格模式，可以在顶部添加代码：<code>&quot;use strict&quot;;</code>。这是一个编译指示，用于告诉支持的JavaScript引擎切换到严格模式。</p>
-<p>也可以在函数内部的上方包含这条编译指示，指定函数在严格模式下执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function doSomething()&#123;</span><br><span class="line">    &quot;use strict&quot;;</span><br><span class="line">    //函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/jsNote1/" data-id="cjya7osap0008v0utf62lrp2q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/10/jsNote2/" data-id="cjyczzu4z000egwut14uj9ogk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -908,6 +908,10 @@
       <ul>
         
           <li>
+            <a href="/2019/07/21/ES6three/">ES6three</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/19/ES6two/">ES6two</a>
           </li>
         
@@ -921,10 +925,6 @@
         
           <li>
             <a href="/2019/07/16/canvasLearning/">canvasLearning</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/15/jsNote5/">jsNote5</a>
           </li>
         
       </ul>

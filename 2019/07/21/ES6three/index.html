@@ -5,20 +5,20 @@
   
 
   
-  <title>jsNote5 | Hexo</title>
+  <title>ES6three | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数表达式 闭包是指有权访问另一个函数作用域中的变量的函数。 后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。 作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。 闭包只能取得包含函数中任何变量的最后一个值。 匿名函数的执行环境具有全局性，因此其this对象通常指向window。 JavaScript中没有私有成员的概">
-<meta name="keywords" content="JavaScriptLearning">
+  <meta name="description" content="Symbol 是一种ES6规定的新的数据类型。不能使用new运算符来构造，因为Symbol本身是值而不是对象。在创建Symbol值的时候，括号里的值可以用来作为该Symbol值的标识，但标识相同的Symbol值也不相等。 每个Symbol都是独一无二的，因此适合用于实例对象添加新属性，可以避免覆盖掉原先原型里的属性等问题。 将Symbol用作属性名时，不能使用点方法，需要使用方括号语法。因为点方">
+<meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsNote5">
-<meta property="og:url" content="http://yoursite.com/2019/07/15/jsNote5/index.html">
+<meta property="og:title" content="ES6three">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/ES6three/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="函数表达式 闭包是指有权访问另一个函数作用域中的变量的函数。 后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。 作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。 闭包只能取得包含函数中任何变量的最后一个值。 匿名函数的执行环境具有全局性，因此其this对象通常指向window。 JavaScript中没有私有成员的概">
+<meta property="og:description" content="Symbol 是一种ES6规定的新的数据类型。不能使用new运算符来构造，因为Symbol本身是值而不是对象。在创建Symbol值的时候，括号里的值可以用来作为该Symbol值的标识，但标识相同的Symbol值也不相等。 每个Symbol都是独一无二的，因此适合用于实例对象添加新属性，可以避免覆盖掉原先原型里的属性等问题。 将Symbol用作属性名时，不能使用点方法，需要使用方括号语法。因为点方">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-15T13:34:42.399Z">
+<meta property="og:updated_time" content="2019-07-21T13:29:19.530Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsNote5">
-<meta name="twitter:description" content="函数表达式 闭包是指有权访问另一个函数作用域中的变量的函数。 后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。 作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。 闭包只能取得包含函数中任何变量的最后一个值。 匿名函数的执行环境具有全局性，因此其this对象通常指向window。 JavaScript中没有私有成员的概">
+<meta name="twitter:title" content="ES6three">
+<meta name="twitter:description" content="Symbol 是一种ES6规定的新的数据类型。不能使用new运算符来构造，因为Symbol本身是值而不是对象。在创建Symbol值的时候，括号里的值可以用来作为该Symbol值的标识，但标识相同的Symbol值也不相等。 每个Symbol都是独一无二的，因此适合用于实例对象添加新属性，可以避免覆盖掉原先原型里的属性等问题。 将Symbol用作属性名时，不能使用点方法，需要使用方括号语法。因为点方">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jsNote5" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ES6three" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/15/jsNote5/" class="article-date">
-  <time datetime="2019-07-15T13:34:06.000Z" itemprop="datePublished">2019-07-15</time>
+    <a href="/2019/07/21/ES6three/" class="article-date">
+  <time datetime="2019-07-21T13:28:35.000Z" itemprop="datePublished">2019-07-21</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jsNote5
+      ES6three
     </h1>
   
 
@@ -87,22 +87,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h4><ul>
-<li>闭包是指有权访问另一个函数作用域中的变量的函数。</li>
-<li>后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。</li>
-<li>作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。</li>
-<li>闭包只能取得包含函数中任何变量的最后一个值。</li>
-<li>匿名函数的执行环境具有全局性，因此其<code>this</code>对象通常指向<code>window</code>。</li>
-<li>JavaScript中没有私有成员的概念，所有对象属性都是公有的。不管在任何函数中定义的变量，都可以认为是私有变量。有权访问私有变量和私有函数的公有方法称为特权方法。</li>
+        <ul>
+<li><p>Symbol</p>
+<p>是一种ES6规定的新的数据类型。不能使用<code>new</code>运算符来构造，因为<code>Symbol</code>本身是值而不是对象。在创建<code>Symbol</code>值的时候，括号里的值可以用来作为该<code>Symbol</code>值的标识，但标识相同的<code>Symbol</code>值也不相等。</p>
+<p>每个<code>Symbol</code>都是独一无二的，因此适合用于实例对象添加新属性，可以避免覆盖掉原先原型里的属性等问题。</p>
+<p>将<code>Symbol</code>用作属性名时，不能使用点方法，需要使用方括号语法。因为点方法后面的属性名不能用变量表示，会被当成字符串，替换成方括号就能解决，方括号里可以使用变量。</p>
+<p><code>Sybmol</code>值作为属性名时，该属性是公开属性而不是私有属性。（这个概念还不是很清晰）</p>
+<p>使用<code>Symbol.for()</code>方法创建的值则是标识符相同的<code>Symbol</code>值相同。每使用这个方法创建值时都会先搜索是否有使用括号里的标识符且是<code>Symbol.for()</code>方法创建的<code>Symbol</code>值，若搜索到则使用那个值，搜索不到才创建新的一个。<code>Symbol.keyFor()</code>方法则返回使用<code>Symbol.for()</code>方法创建的<code>Symbol</code>值的标识符。</p>
+<p>还有很多<code>Symbol</code>的方法，有些还不能很好的理解，以后找机会再看~</p>
+</li>
+<li><p>Set</p>
+<p>感觉和集合很像，集合里的元素都是唯一的，<code>Set</code>里的数组元素也都是唯一的。可以使用数组转化为<code>Set</code>的方式去除掉数组里重复的对象。</p>
+<p>在<code>Set</code>里面，<code>NaN</code>和自身是相等的，这点和往常不同。</p>
+<p><code>WeakSet</code>里面只能存放对象，且垃圾回收机制不考虑<code>WeakSet</code>对该对象的引用。</p>
+</li>
+<li><p>Map</p>
+<p>对象里只能用字符串做键名，Map适合对象类似的结构但是它的键名可以是各种数据类型。</p>
+<p><code>WeakMap</code>和<code>WeakSet</code>很相似，只能用对象作为键名，也是垃圾回收机制不考虑<code>WeakSet</code>对该对象的引用。</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjyczzu59000mgwutcl887zi1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/21/ES6three/" data-id="cjyczzu400000gwutf0kg7wwb" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
 
     </footer>
   </div>
@@ -110,19 +121,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/07/16/canvasLearning/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          canvasLearning
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/14/随笔/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/19/ES6two/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">随笔</div>
+      <div class="article-nav-title">ES6two</div>
     </a>
   
 </nav>
