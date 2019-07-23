@@ -62,6 +62,116 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jsNote3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/11/jsNote3/" class="article-date">
+  <time datetime="2019-07-11T13:21:27.000Z" itemprop="datePublished">2019-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/11/jsNote3/">jsNote3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>ECMAScript中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</p>
+</li>
+<li><p><code>for-in</code>语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for (property in expression) statement</span><br></pre></td></tr></table></figure>
+
+<p>一种精确的迭代语句，可以用来枚举对象的属性。</p>
+<p>如果表示要迭代的对象的变量值为<code>null</code>或<code>undefined</code>，<code>for-in</code>语句会抛出错误。ECMAScript5更正了这一行为，对这种情况不再抛出错误，而只是不执行循环体。</p>
+</li>
+<li><p><code>label</code>语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label: statement</span><br></pre></td></tr></table></figure>
+
+<p>使用该语句可以在代码中添加标签，以便将来使用。</p>
+<p>加标签的语句一般都要与<code>for</code>语句等循环语句配合使用。、</p>
+</li>
+<li><p><code>break</code>和<code>continue</code>语句都可以与<code>label</code>语句联合使用，比如可以使用标签一次跳出多层的嵌套循环。</p>
+</li>
+<li><p><code>with</code>语句的作用是将代码的作用域设置到一个特定的对象中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">with (expression) statement</span><br></pre></td></tr></table></figure>
+
+<p>比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var qs = location.search.substring(1);</span><br><span class="line">var hostName = location.hostName;</span><br><span class="line">var url = location.href;</span><br></pre></td></tr></table></figure>
+
+<p>可以改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with(location)&#123;</span><br><span class="line">	var qs = search.substring(1);</span><br><span class="line">	var hostName = hostName;</span><br><span class="line">	var url = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>严格模式下不允许使用<code>with</code>语句，否则将视为语法错误。也不建议使用这个语句。</p>
+</li>
+<li><p>使用<code>switch</code>语句时记得加<code>break;</code>。可以在<code>switch</code> 语句中使用任何数据类型。该语句在比较值的时候使用的是全等操作符，因此不会发生类型转换。</p>
+</li>
+<li><p>ECMAScript中的参数在内部是用一个数组来表示的，函数接收到的始终都是这个数组，而不关心数组中包含哪些参数（如果有参数的话）</p>
+<p><code>arguments</code>对象只能在函数中使用。</p>
+<p><code>arguments</code>的值永远与对应命名参数的值保持同步。但它们的内存空间是独立的。</p>
+</li>
+<li><p>函数不能重载。</p>
+</li>
+<li><p>基本类型—-&gt;栈，引用类型—-&gt;堆</p>
+</li>
+<li><p>函数的参数都是按值传递的，即使是引用类型也是传递了指针的值进去。相当于复制了实参的值给形参，函数内部改变的只是形参的值。但当传递引用类型的值进函数时，对形参的操作可能会影响到传进去的那个实参，是因为形参和实参指向的都是堆中的同一个地址。函数内对形参的操作实际上就是在对堆里面那块内存动手脚。</p>
+</li>
+<li><p><code>instanceof()</code>用来检测对象的类型。</p>
+<p>语法：<code>result = variable instanceof constructor</code></p>
+</li>
+<li><p>所有引用类型的值都是Object的实例。</p>
+</li>
+<li><p>每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量和函数都保存在这个对象中。某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁。</p>
+</li>
+<li><p>当代码在一个环境中执行时，会创建变量对象的一个作用域链。用途是保证对执行环境有权访问的所有变量和函数的有序访问。内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数。</p>
+</li>
+<li><p>使用<code>var</code>声明的变量会自动被添加到最接近的环境中。如果初始化变量是没有使用<code>var</code>声明，该变量会自动添加到全局环境。</p>
+</li>
+<li><p>如果局部环境中存在着同名标识符，就不会使用位于父环境中的标识符。</p>
+</li>
+<li><p>引用计数的垃圾清除算法可能会出现循环引用，无法释放内存。</p>
+</li>
+<li><p>只要在IE中涉及COM对象，就会存在循环引用的问题。IE9将BOM和DOM对象转化成立真正的JavaScript对象，避免了两种垃圾收集算法并存导致的问题。</p>
+</li>
+<li><p>浏览器的垃圾收集器是周期性运行的，触发机制不同浏览器可能会有差异。在IE中可以用<code>window.CollectGarbage()</code>是垃圾收集立刻执行，在Opera7及更高版本中，调用<code>window.opera.collect()</code>也可以启动垃圾收集例程。但不建议程序员主动触发垃圾收集过程。</p>
+</li>
+<li><p>一旦数据不再有用，最好通过将其值设置为<code>null</code>来释放其引用，这个做法叫做解除引用。解除引用的真正作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。适用于大多数全局变量和全局对象的属性。为执行中的代码只保存必要的数据是优化内存占用的最佳方式。</p>
+</li>
+<li><p>表达式上下文指的是该上下文期待一个值（表达式）。</p>
+</li>
+<li><p>在使用方括号语法时，应该将要访问的属性以字符串的形式放在方括号内。</p>
+</li>
+<li><p><code>join()</code>方法可以指定数组元素输出为字符串时的分隔符。</p>
+</li>
+<li><p>数组的<code>pop()</code>方法返回的是取得的值，<code>push()</code>方法返回的数组长度。</p>
+</li>
+<li><p>用<code>shift()</code>和<code>push()</code>方法可以实现类似于队列先进先出的数据结构。<code>unshift()</code>和<code>pop()</code>可以实现与队列相反的操作，队头进，队尾出。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/11/jsNote3/" data-id="cjyfvckcf000i6kutosdj6wyp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-jsNote2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/10/jsNote2/" class="article-date">
@@ -145,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/10/jsNote2/" data-id="cjyegipm7000eu8ut3t1v6272" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/10/jsNote2/" data-id="cjyfvckdk000p6kutew6c8f1v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -202,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/jsNote1/" data-id="cjyegipm30009u8ut50a4ubpy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/09/jsNote1/" data-id="cjyfvckc600086kutbh4hum2y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -269,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/blog1/" data-id="cjyegiplz0005u8utchqbjmo0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/09/blog1/" data-id="cjyfvckc000036kuteqnef87i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/foot/">foot</a></li></ul>
@@ -320,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/hello-world/" data-id="cjyegiplx0004u8ut99g4mzpz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/09/hello-world/" data-id="cjyfvckce000h6kutfm0jz9vv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +458,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li></ul>
     </div>
   </div>
 
@@ -358,7 +468,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
     </div>
   </div>
 
@@ -380,6 +490,10 @@
       <ul>
         
           <li>
+            <a href="/2019/07/23/jQuery-1/">jQuery_1</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/22/ES6four/">ES6four</a>
           </li>
         
@@ -393,10 +507,6 @@
         
           <li>
             <a href="/2019/07/18/ES6one/">ES6one</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/17/jsNote6/">jsNote6</a>
           </li>
         
       </ul>
