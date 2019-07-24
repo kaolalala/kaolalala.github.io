@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>移动端适应开发坑 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天开始多人合作移动端网页的开发，写个笔记记录遇到的难题   在开始动手之前，我先搜索了一番移动端适配的问题总结，下面是初步搜到的结果。  在针对移动端开发时，先在&amp;lt;head&amp;gt;标签中多加一个&amp;lt;meta&amp;gt;标签来定义viewport这个属性。 其中有一些在我看来较为常用的属性： 12345width：控制viewport的宽度，这个值可以使用像素值指定也可以用“device-">
+<meta name="keywords" content="移动端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端适应开发坑">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/移动端适应开发坑/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天开始多人合作移动端网页的开发，写个笔记记录遇到的难题   在开始动手之前，我先搜索了一番移动端适配的问题总结，下面是初步搜到的结果。  在针对移动端开发时，先在&amp;lt;head&amp;gt;标签中多加一个&amp;lt;meta&amp;gt;标签来定义viewport这个属性。 其中有一些在我看来较为常用的属性： 12345width：控制viewport的宽度，这个值可以使用像素值指定也可以用“device-">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/07/24/移动端适应开发坑/DPR.png">
+<meta property="og:updated_time" content="2019-07-24T14:23:26.327Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端适应开发坑">
+<meta name="twitter:description" content="今天开始多人合作移动端网页的开发，写个笔记记录遇到的难题   在开始动手之前，我先搜索了一番移动端适配的问题总结，下面是初步搜到的结果。  在针对移动端开发时，先在&amp;lt;head&amp;gt;标签中多加一个&amp;lt;meta&amp;gt;标签来定义viewport这个属性。 其中有一些在我看来较为常用的属性： 12345width：控制viewport的宽度，这个值可以使用像素值指定也可以用“device-">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/24/移动端适应开发坑/DPR.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动端适应开发坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/24/移动端适应开发坑/" class="article-date">
+  <time datetime="2019-07-24T14:19:44.000Z" itemprop="datePublished">2019-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动端适应开发坑
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>今天开始多人合作移动端网页的开发，写个笔记记录遇到的难题</p>
+</blockquote>
+<ul>
+<li><p>在开始动手之前，我先搜索了一番移动端适配的问题总结，下面是初步搜到的结果。</p>
+<ol>
+<li><p>在针对移动端开发时，先在<code>&lt;head&gt;</code>标签中多加一个<code>&lt;meta&gt;</code>标签来定义<code>viewport</code>这个属性。</p>
+<p>其中有一些在我看来较为常用的属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">width：控制viewport的宽度，这个值可以使用像素值指定也可以用“device-width”设置视口宽度为设备宽度。这个属性的话我希望我的页面始终和所在屏幕一样宽，使用设置为“device-width”。</span><br><span class="line">height：控制viewport的高度。一般开发的页面都是长页面，所以很少指定高度，这个属性暂且用不上。</span><br><span class="line">initial-scale：初始缩放比例，即每一次加载时页面缩放的比例。这个属性的公式为“设备宽度/网页显示宽度”，所以当值大于1时是缩小，小于1是放大。正常情况下是设置为1的。</span><br><span class="line">user-scaleable：是否允许用户缩放，可以传“yes”或“no”。我作为一个初试小刀的选手，也不晓得缩放之后会有什么效果，为了保险先设置为“no”。</span><br><span class="line">maximum-scale/minimum-scale：允许用户缩放到的最大/最小缩放比例。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>还有一个是关于设备像素值的问题。之前设计的小伙伴说苹果手机的设计规范是左右边距都得留30px的距离，因为在手机上那片区域可能对手指操作没有感应。但是在设计稿中实际设置的数值则是15px，有点疑惑为什么是两倍，这次搜索也看到了原因。</p>
+<p>这与DPR值有关：</p>
+<p><img src="/2019/07/24/移动端适应开发坑/DPR.png" alt></p>
+</li>
+<li><p>CSS的<code>vw</code>属性很适合用在自适应上，<code>vw</code>是可视窗口的宽度单位，和百分比有点一样，<code>1vw</code>=可视窗口的宽度的百分之一。与之对应的是<code>vh</code>，表示高度。只是一般我们倾向于使用<code>vw</code>，而不是<code>vh</code>。因为屏幕的宽度一般不会有太大改变，但高度有可能随着键盘的弹出或其他原因而改变，所以我们尽量减少使用<code>vh</code>。还可以配合<code>rem</code>和百分比等单位一起使用，更好的实现自适应。</p>
+</li>
+</ol>
+</li>
+<li><p>动手之中的问题</p>
+<ol>
+<li><p>单位</p>
+<p>之前使用<code>rem</code>觉得可以通过控制<code>html</code>标签的<code>font-size</code>控制全局的大小。于是我把<code>html</code>的<code>font-size</code>设为<code>1vw</code>，但是这样的话在其他选择器中使用<code>rem</code>代替<code>vw</code>去做单位时在手机（iPhone6）上尺寸显示正常在浏览器上却大小很奇怪。把之前用的<code>rem</code>改成<code>vw</code>就正常了，玄学~</p>
+</li>
+<li><p>设置字体在盒子中垂直居中，一行字的话可以设置<code>line-height</code>为盒子的高，就实现了。</p>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>参考博文：<a href="https://blog.csdn.net/hjc256/article/details/83097907" target="_blank" rel="noopener">https://blog.csdn.net/hjc256/article/details/83097907</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/24/移动端适应开发坑/" data-id="cjyhc97em000jskutz4hulf0o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/23/jQuery-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jQuery_1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/24/移动端适应开发坑/">移动端适应开发坑</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/23/jQuery-1/">jQuery_1</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/22/ES6four/">ES6four</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/21/ES6three/">ES6three</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/19/ES6two/">ES6two</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
