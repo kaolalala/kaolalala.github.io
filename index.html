@@ -62,6 +62,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jQyery-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/25/jQyery-2/" class="article-date">
+  <time datetime="2019-07-25T13:47:05.000Z" itemprop="datePublished">2019-07-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/jQyery-2/">jQyery_2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天继续学习jQuery</p>
+<ol>
+<li><p>看到添加元素的方法，里面菜鸟教程举了一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">appendText</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">var</span> txt1=<span class="string">"&lt;p&gt;文本。&lt;/p&gt;"</span>;              <span class="comment">// 使用 HTML 标签创建文本</span></span><br><span class="line"><span class="keyword">var</span> txt2=$(<span class="string">"&lt;p&gt;&lt;/p&gt;"</span>).text(<span class="string">"文本。"</span>);  <span class="comment">// 使用 jQuery 创建文本</span></span><br><span class="line"><span class="keyword">var</span> txt3=<span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</span><br><span class="line">txt3.innerHTML=<span class="string">"文本。"</span>;               <span class="comment">// 使用 DOM 创建文本 text with DOM</span></span><br><span class="line">$(<span class="string">"body"</span>).append(txt1,txt2,txt3);        <span class="comment">// 追加新元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>里面<code>txt1</code>，<code>txt2</code>，<code>txt3</code>的作用都是一样的，第一和第三个我知道是什么意思，但是第二个就有点疑惑了。<code>$(&quot;&quot;)</code>里面不是应该放选择器吗，放<code>&lt;p&gt;&lt;/p&gt;</code>是啥意思，搜索了一下，发现这个参数除了时选择器，还可以是dom对象和html字符串，html字符串就是在内存中生成新的dom，需要添加到dom树中才行。</p>
+<p>参考网址：<a href="https://ask.csdn.net/questions/234652" target="_blank" rel="noopener">https://ask.csdn.net/questions/234652</a></p>
+</li>
+<li><p>还有<code>append()</code>是在被选元素的结尾插入元素，<code>after()</code>在被选元素之后插入内容。那这二者有什么区别呢？在这篇教程下有一位网友很好的说明了这个问题。</p>
+<p><img src="/2019/07/25/jQyery-2/append_prepend.png" alt></p>
+</li>
+<li><p>对于jQuery获取和设置元素的几种方法，主要弄清楚下面几个概念。</p>
+<p><img src="/2019/07/25/jQyery-2/width.png" alt></p>
+</li>
+<li><p><code>parentsUntil()</code>方法返回的是介于两个给定元素之间所有的祖先元素。</p>
+<p>用法为<code>$(&quot;子代&quot;).parentsUntil(&quot;祖先&quot;)</code>，注意子代和祖先的位置。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/25/jQyery-2/" data-id="cjyiqgqhw000dywutku5u5j22" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-移动端适应开发坑" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/24/移动端适应开发坑/" class="article-date">
@@ -119,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/24/移动端适应开发坑/" data-id="cjyhc97em000jskutz4hulf0o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/24/移动端适应开发坑/" data-id="cjyiqgqic000sywutw0dm2kkh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
@@ -179,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/jQuery-1/" data-id="cjyhc97ee000bskuty9l8c0e5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/jQuery-1/" data-id="cjyiqgqi1000hywutvhgh5r1k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
@@ -220,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/22/ES6four/" data-id="cjyhc97bg0000skut2aq3lj3h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/22/ES6four/" data-id="cjyiqgqgh0000ywutzyigve0j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
@@ -277,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/21/ES6three/" data-id="cjyhc97dv0003skutpfo1ftod" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/21/ES6three/" data-id="cjyiqgqhi0004ywutfzaun3ut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
@@ -332,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/19/ES6two/" data-id="cjyhc97ei000fskutalmvivyv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/19/ES6two/" data-id="cjyiqgqhc0001ywutbkaozos7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
@@ -409,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/18/ES6one/" data-id="cjyhc97e00006skutif921gs6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/18/ES6one/" data-id="cjyiqgqhh0003ywutss5ntjm3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
@@ -531,7 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/17/jsNote6/" data-id="cjyhc97ep000lskut50j2t10w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/17/jsNote6/" data-id="cjyiqgqi9000pywut6lf1pd4b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -669,7 +725,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/canvasLearning/" data-id="cjyhc97f60010skutafqarzlo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/canvasLearning/" data-id="cjyiqgqiu0014ywut5sozixo9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
@@ -715,52 +771,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjyhc97ey000tskutvb1n6ofa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjyiqgqi8000nywut8o2yw4o1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-随笔" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/14/随笔/" class="article-date">
-  <time datetime="2019-07-14T12:26:02.000Z" itemprop="datePublished">2019-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/随笔/">随笔</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​        今天是来工作室培训的第七天（算上中间昨天放假）。</p>
-<p>​        这个暑假可能是难得的有一整块培训的时间。其实我觉得一个月可能会有点短，但是也觉得该回家一趟。所以下个月还是会回家一段时间，希望回家了也能静得下心来学习吧。</p>
-<p>​        这两天一直在看高程，有些地方还是有点绕的，希望能赶紧看完，但是主要还是想理解的透彻一点。在未来的学习生涯我更希望把基础打好，最想培养的是持续学习的能力，感觉其中基础扎实很重要，也才能支持我将来走的更远。</p>
-<p>​        每天在这里过的都快乐又愧疚，快乐是觉得氛围真的很好，环境也很舒适，我前两天甚至过上了养生的生活，每天也能有学习的时间。愧疚的是感觉我还不够认真，每天学习的时长好像不够多，但是在规定时间外我真的很难使自己静下心来学习，希望接下来能更好的约束自己吧。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/随笔/" data-id="cjyhc97ew000qskut2m9370uz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
 
     </footer>
   </div>
@@ -797,7 +811,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
+      <a href="/tags/ES6/" style="font-size: 16.67px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
     </div>
   </div>
 
@@ -819,6 +833,10 @@
       <ul>
         
           <li>
+            <a href="/2019/07/25/jQyery-2/">jQyery_2</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/24/移动端适应开发坑/">移动端适应开发坑</a>
           </li>
         
@@ -832,10 +850,6 @@
         
           <li>
             <a href="/2019/07/21/ES6three/">ES6three</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/19/ES6two/">ES6two</a>
           </li>
         
       </ul>

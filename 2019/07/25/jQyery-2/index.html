@@ -5,22 +5,23 @@
   
 
   
-  <title>jQuery_1 | Hexo</title>
+  <title>jQyery_2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jQuery学习笔记 元素的选取 在原生中，通常使用get方法获取HTML文档中的元素，通常要写很长的一段表达式，较为不方便。 使用jQuery则比较便捷的获取元素，使用$(&amp;quot;&amp;quot;)获取元素，双引号内的元素获取方法和CSS选择器是一样的，比如获取&amp;lt;p&amp;gt;标签的元素，则使用$(&amp;quot;p&amp;quot;)。  事件 jQuery里的事件ready和原生的onload很类似">
+  <meta name="description" content="今天继续学习jQuery  看到添加元素的方法，里面菜鸟教程举了一个例子。 12345678function appendText()&amp;#123;var txt1=&quot;&amp;lt;p&amp;gt;文本。&amp;lt;/p&amp;gt;&quot;;              // 使用 HTML 标签创建文本var txt2=$(&quot;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;&quot;).text(&quot;文本。&quot;);  // 使用 jQuery 创">
 <meta name="keywords" content="jQuery">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery_1">
-<meta property="og:url" content="http://yoursite.com/2019/07/23/jQuery-1/index.html">
+<meta property="og:title" content="jQyery_2">
+<meta property="og:url" content="http://yoursite.com/2019/07/25/jQyery-2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="jQuery学习笔记 元素的选取 在原生中，通常使用get方法获取HTML文档中的元素，通常要写很长的一段表达式，较为不方便。 使用jQuery则比较便捷的获取元素，使用$(&amp;quot;&amp;quot;)获取元素，双引号内的元素获取方法和CSS选择器是一样的，比如获取&amp;lt;p&amp;gt;标签的元素，则使用$(&amp;quot;p&amp;quot;)。  事件 jQuery里的事件ready和原生的onload很类似">
+<meta property="og:description" content="今天继续学习jQuery  看到添加元素的方法，里面菜鸟教程举了一个例子。 12345678function appendText()&amp;#123;var txt1=&quot;&amp;lt;p&amp;gt;文本。&amp;lt;/p&amp;gt;&quot;;              // 使用 HTML 标签创建文本var txt2=$(&quot;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;&quot;).text(&quot;文本。&quot;);  // 使用 jQuery 创">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/07/23/jQuery-1/1.jpg">
-<meta property="og:updated_time" content="2019-07-23T13:42:06.677Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/25/jQyery-2/append_prepend.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/25/jQyery-2/width.png">
+<meta property="og:updated_time" content="2019-07-25T13:49:10.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery_1">
-<meta name="twitter:description" content="jQuery学习笔记 元素的选取 在原生中，通常使用get方法获取HTML文档中的元素，通常要写很长的一段表达式，较为不方便。 使用jQuery则比较便捷的获取元素，使用$(&amp;quot;&amp;quot;)获取元素，双引号内的元素获取方法和CSS选择器是一样的，比如获取&amp;lt;p&amp;gt;标签的元素，则使用$(&amp;quot;p&amp;quot;)。  事件 jQuery里的事件ready和原生的onload很类似">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/23/jQuery-1/1.jpg">
+<meta name="twitter:title" content="jQyery_2">
+<meta name="twitter:description" content="今天继续学习jQuery  看到添加元素的方法，里面菜鸟教程举了一个例子。 12345678function appendText()&amp;#123;var txt1=&quot;&amp;lt;p&amp;gt;文本。&amp;lt;/p&amp;gt;&quot;;              // 使用 HTML 标签创建文本var txt2=$(&quot;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;&quot;).text(&quot;文本。&quot;);  // 使用 jQuery 创">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/25/jQyery-2/append_prepend.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jQuery-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jQyery-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/23/jQuery-1/" class="article-date">
-  <time datetime="2019-07-23T13:40:24.000Z" itemprop="datePublished">2019-07-23</time>
+    <a href="/2019/07/25/jQyery-2/" class="article-date">
+  <time datetime="2019-07-25T13:47:05.000Z" itemprop="datePublished">2019-07-25</time>
 </a>
     
   </div>
@@ -81,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery_1
+      jQyery_2
     </h1>
   
 
@@ -89,33 +90,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="jQuery学习笔记"><a href="#jQuery学习笔记" class="headerlink" title="jQuery学习笔记"></a>jQuery学习笔记</h3><ol>
-<li><p>元素的选取</p>
-<p>在原生中，通常使用<code>get</code>方法获取HTML文档中的元素，通常要写很长的一段表达式，较为不方便。</p>
-<p>使用jQuery则比较便捷的获取元素，使用<code>$(&quot;&quot;)</code>获取元素，双引号内的元素获取方法和CSS选择器是一样的，比如获取<code>&lt;p&gt;</code>标签的元素，则使用<code>$(&quot;p&quot;)</code>。</p>
+        <p>今天继续学习jQuery</p>
+<ol>
+<li><p>看到添加元素的方法，里面菜鸟教程举了一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">appendText</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">var</span> txt1=<span class="string">"&lt;p&gt;文本。&lt;/p&gt;"</span>;              <span class="comment">// 使用 HTML 标签创建文本</span></span><br><span class="line"><span class="keyword">var</span> txt2=$(<span class="string">"&lt;p&gt;&lt;/p&gt;"</span>).text(<span class="string">"文本。"</span>);  <span class="comment">// 使用 jQuery 创建文本</span></span><br><span class="line"><span class="keyword">var</span> txt3=<span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</span><br><span class="line">txt3.innerHTML=<span class="string">"文本。"</span>;               <span class="comment">// 使用 DOM 创建文本 text with DOM</span></span><br><span class="line">$(<span class="string">"body"</span>).append(txt1,txt2,txt3);        <span class="comment">// 追加新元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>里面<code>txt1</code>，<code>txt2</code>，<code>txt3</code>的作用都是一样的，第一和第三个我知道是什么意思，但是第二个就有点疑惑了。<code>$(&quot;&quot;)</code>里面不是应该放选择器吗，放<code>&lt;p&gt;&lt;/p&gt;</code>是啥意思，搜索了一下，发现这个参数除了时选择器，还可以是dom对象和html字符串，html字符串就是在内存中生成新的dom，需要添加到dom树中才行。</p>
+<p>参考网址：<a href="https://ask.csdn.net/questions/234652" target="_blank" rel="noopener">https://ask.csdn.net/questions/234652</a></p>
 </li>
-<li><p>事件</p>
-<p>jQuery里的事件<code>ready</code>和原生的<code>onload</code>很类似，但是有些小区别</p>
-<p><img src="/2019/07/23/jQuery-1/1.jpg" alt></p>
-<p>其他事件的话应该都大同小异，需要用到时查文档即可。</p>
+<li><p>还有<code>append()</code>是在被选元素的结尾插入元素，<code>after()</code>在被选元素之后插入内容。那这二者有什么区别呢？在这篇教程下有一位网友很好的说明了这个问题。</p>
+<p><img src="/2019/07/25/jQyery-2/append_prepend.png" alt></p>
 </li>
-<li><p>效果</p>
-<p>jQuery还封装了一系列函数可以写很少的语句就改变元素的状态以及改变过程的动画。</p>
-<p>其中规定自定义动画时，要用驼峰命名法去引用CSS的属性。且无法规定颜色属性除非另外安装插件。</p>
+<li><p>对于jQuery获取和设置元素的几种方法，主要弄清楚下面几个概念。</p>
+<p><img src="/2019/07/25/jQyery-2/width.png" alt></p>
 </li>
-<li><p>动画</p>
-<p>使用动画队列可以使多个动画逐一进行，其中引入了队列的数据结构。</p>
-</li>
-<li><p>链</p>
-<p>jQuery的链可以同时定义多个效果，较为方便的写法。</p>
+<li><p><code>parentsUntil()</code>方法返回的是介于两个给定元素之间所有的祖先元素。</p>
+<p>用法为<code>$(&quot;子代&quot;).parentsUntil(&quot;祖先&quot;)</code>，注意子代和祖先的位置。</p>
 </li>
 </ol>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>个人感觉jQuery的很多方法就是把原生的很多函数封装之后使得可以用极短的语句完成，大大提高了打码的效率。其中的封装思想很值得学习。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/jQuery-1/" data-id="cjyiqgqi1000hywutvhgh5r1k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/25/jQyery-2/" data-id="cjyiqgqhw000dywutku5u5j22" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
@@ -126,19 +123,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/07/24/移动端适应开发坑/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          移动端适应开发坑
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/22/ES6four/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/24/移动端适应开发坑/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ES6four</div>
+      <div class="article-nav-title">移动端适应开发坑</div>
     </a>
   
 </nav>
