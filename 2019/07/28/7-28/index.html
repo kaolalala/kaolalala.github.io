@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>上传图片 | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="日博,">
+  
+
+  <meta name="description" content="上传图片 使input[type=file]只能上传图片类型的文件，在标签中设置accept=&amp;quot;image/*&amp;quot;，据说这样在Webkit内核的浏览器中会使打开文件夹的速度变慢，但是我在谷歌浏览器中试了一下，感觉速度差不多。不过还是记一下博主说的解决方法：&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;image/gif,image/jp">
+<meta name="keywords" content="日博">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上传图片">
+<meta property="og:url" content="http://yoursite.com/2019/07/28/7-28/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="上传图片 使input[type=file]只能上传图片类型的文件，在标签中设置accept=&amp;quot;image/*&amp;quot;，据说这样在Webkit内核的浏览器中会使打开文件夹的速度变慢，但是我在谷歌浏览器中试了一下，感觉速度差不多。不过还是记一下博主说的解决方法：&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;image/gif,image/jp">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/7-28/readPic_test.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/7-28/test.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/7-28/test_3.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/7-28/test_2.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/7-28/readAsDataURL.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/7-28/onload.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/7-28/filereader_readystate.png">
+<meta property="og:updated_time" content="2019-07-28T15:31:33.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="上传图片">
+<meta name="twitter:description" content="上传图片 使input[type=file]只能上传图片类型的文件，在标签中设置accept=&amp;quot;image/*&amp;quot;，据说这样在Webkit内核的浏览器中会使打开文件夹的速度变慢，但是我在谷歌浏览器中试了一下，感觉速度差不多。不过还是记一下博主说的解决方法：&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;image/gif,image/jp">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/28/7-28/readPic_test.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#上传图片"><span class="toc-text">上传图片</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-7-28" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">上传图片</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.07.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>John Doe</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h4><ol>
+<li><p>使<code>input[type=file]</code>只能上传图片类型的文件，在标签中设置<code>accept=&quot;image/*&quot;</code>，据说这样在Webkit内核的浏览器中会使打开文件夹的速度变慢，但是我在谷歌浏览器中试了一下，感觉速度差不多。不过还是记一下博主说的解决方法：<code>&lt;input type=&quot;file&quot; accept=&quot;image/gif,image/jpeg,image/jpg,image/png,image/svg&quot;&gt;</code>，即把<code>image/</code>后面的通配符改成具体的文件类型名。</p>
+<p>参考博文：<a href="https://www.cnblogs.com/java-dyb/p/10895077.html" target="_blank" rel="noopener">https://www.cnblogs.com/java-dyb/p/10895077.html</a></p>
+</li>
+<li><p><code>input[type=file]</code>上传多个文件，设置<code>multiple</code>属性即可。</p>
+</li>
+<li><p><code>FileReader</code>对象的<code>readAsDataURL</code>方法</p>
+<p>学习上传一个或多个文件的过程中，参考了几篇博文，其中起作用最大的两篇：<a href="https://www.jianshu.com/p/57c8103272bf，https://www.cnblogs.com/web-wjg/p/7799173.html" target="_blank" rel="noopener">https://www.jianshu.com/p/57c8103272bf，https://www.cnblogs.com/web-wjg/p/7799173.html</a></p>
+<p>在上传并回显图片的函数中，使用了<code>FileReader</code>对象，下面是我根据自己的情况并参考博文写的函数（还没有完全完善），附上HTML和CSS代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pic"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"add"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"pic_vid"</span> <span class="attr">id</span>=<span class="string">"pic_vid"</span> <span class="attr">multiple</span> <span class="attr">accept</span>=<span class="string">"image/*"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.pic</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">92vw</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">1vw</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.pic</span>&gt;<span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">25.6vw</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">25.6vw</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1vw</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.add</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(../images/kaola/add.png);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.add</span>&gt;<span class="selector-tag">input</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 功能：读取图片</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readPic</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//绑定change事件，.add选取的是上传文件按钮的盒子</span></span><br><span class="line">    $(<span class="string">".add"</span>).change(</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">//#pic_vid是上传文件的input元素</span></span><br><span class="line">            <span class="keyword">let</span> files = $(<span class="string">"#pic_vid"</span>)[<span class="number">0</span>].files;</span><br><span class="line">            <span class="comment">//上传多个文件，获取文件个数</span></span><br><span class="line">            <span class="keyword">let</span> length = files.length;</span><br><span class="line">            <span class="comment">//遍历取得的文件，并一一添加至页面中</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++)&#123;</span><br><span class="line">                <span class="comment">//新建FileReader对象</span></span><br><span class="line">                <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">                reader.readAsDataURL(files[i]);</span><br><span class="line">                <span class="comment">//加载完成时触发</span></span><br><span class="line">                reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">                    <span class="comment">//获取图片</span></span><br><span class="line">                    <span class="keyword">let</span> newUrl = <span class="keyword">this</span>.result;</span><br><span class="line">                    <span class="comment">//创建新的放置图片元素</span></span><br><span class="line">                    <span class="keyword">let</span> newImg = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">                    <span class="comment">//将元素插入DOM树</span></span><br><span class="line">                    $(<span class="string">".pic"</span>).prepend(newImg);</span><br><span class="line">                    <span class="comment">//设置类名和背景图片（即想要上传的图片）</span></span><br><span class="line">                    newImg.className = <span class="string">"new"</span>;</span><br><span class="line">                    newImg.style.backgroundImage = <span class="string">"url("</span> + newUrl + <span class="string">")"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>里面很多我都能理解并加了注释，但是<code>reader.readAsDataURL(files[i]);</code>这一行我有些不能理解，这个语句并不赋值而且将它的位置放到<code>onload</code>之后也能正确运行，但是把它删掉就无法运行。</p>
+<p>我做了一个实验，在插入元素完成后加了一个弹出框的语句<code>alert(reader.readyState);</code>，</p>
+<p><img src="/2019/07/28/7-28/readPic_test.png" alt></p>
+<p>发现在添加图片后，是先插入元素（此时图片还未显示出来），弹出输入框点击确认后，才显示出图片的样子。</p>
+<p><img src="/2019/07/28/7-28/test.png" alt></p>
+<p><img src="/2019/07/28/7-28/test_3.png" alt></p>
+<p>看一下上面的图片，可以发现在输入框弹出来的时候，<code>newImg</code>已经成功插入DOM树了，<code>class</code>属性也已设置好，但背景图片这个属性的设置并未起作用。</p>
+<p>只是为什么呢，观察一下<code>alert</code>语句之前的两行语句，看起来都是执行同一种类型的命令（为新增的元素添加属性），只是第一句奏效了但第二句好像是在<code>alert</code>之后才起作用。对比一下发现了在第二句中，有一个变量<code>newUrl</code>，那回到这个变量赋值的那一行<code>let newUrl = this.result;</code>（这里<code>this</code>指的是<code>reader</code>变量即<code>FileReader</code>的实例），设置背景图片的语句没有起作用是不是因为此时<code>newUrl</code>还没有完全获取到？难道<code>reader.readAsDataURL(files[i]);</code>的执行是异步的？</p>
+<p>我在Chrome的控制台的JavaScript文件中设置了断点，通过调试看了一下执行顺序，结果却是和之前观察到的有所不同，在断点调试中弹出框却是在图片显示之后才出现的。那这是怎么回事？</p>
+<p>想了一下决定转移一下目光，我想会不会是<code>alert</code>的问题，所以我搜索了<strong>alert()执行时间</strong>，找到了一篇博客感觉写的还不错：<a href="https://www.cnblogs.com/zhenbianshu/p/8686681.html。" target="_blank" rel="noopener">https://www.cnblogs.com/zhenbianshu/p/8686681.html。</a></p>
+<p>这篇博文里讲到JavaScript的线程模型：单线程。也就是说只有一个线程在运行JavaScript程序，但是这样做的话如果遇到代码阻塞会影响到后面任务的执行。所以便有了事件循环（<code>event loop</code>）的产生，JavaScript将一些异步操作或有<code>I/O</code>阻塞的操作（我的理解就是比较花时间的操作）全都放到一个事件队列，先顺序执行同步CPU代码，等到这些代码执行完了CPU空闲下来之后，再读取事件列表的异步事件来依次执行。</p>
+<p>其中作者提到<strong><code>alert()</code> 是 window 的内置函数，被认为是同步 CPU代码；由于页面渲染是 DOM 操作，会被 JavaScript 引擎放入事件队列</strong>。这里我就大胆猜测，由于<code>reader.readAsDataURL(files[i]);</code>运行时间较长可能会造成时间阻塞，或者是设置背景图片这个属性涉及到页面渲染，所以被放进了事件队列，因此会在<code>alert</code>执行后再显示图片。那到底是前者的原因还是后者呢，我再来试一试。</p>
+<p>我把<code>newImg.style.backgroundImage = &quot;url(&quot; + newUrl + &quot;)&quot;;</code>一句中的<code>newUrl</code>替换成一个固定的图片地址，这样这个语句就与<code>reader.readAsDataURL(files[i]);</code>的执行无关，再次试验上传图片，发现和原来是一样的。</p>
+<p><img src="/2019/07/28/7-28/test_2.png" alt></p>
+<p>这次还有个意外发现，是我上次实验没注意到的。就是图中红色箭头指向的地方，虽然我新创造的节点已经出现在DOM树中，但是页面上却一点影子都没有，这更说明和页面渲染是有关系的。通过这就可以确定插入新节点并渲染在页面上被放在了事件队列中，所以会在<code>alert</code>执行之后执行。</p>
+<p>那么<code>reader.readAsDataURL(files[i]);</code>会不会延后至行呢？其实这个问题在我之前找各种各样的答案时就得到了解决。下面是在MDN文档中看到的：</p>
+<p><img src="/2019/07/28/7-28/readAsDataURL.png" alt></p>
+<p><img src="/2019/07/28/7-28/onload.png" alt></p>
+<p>结合所写的代码可以知道，只有<code>reader.readAsDataURL(files[i]);</code>执行了，才会触动<code>reader.onload</code>的事件，并且结合之前测试用添加的<code>alert(reader.readyState);</code>，弹出来的总是2也可以得知已经读取完毕。</p>
+<p><img src="/2019/07/28/7-28/filereader_readystate.png" alt></p>
+<p>前面文档中对<code>FileReader.readAsDataURL()</code>的解释也说了<strong>一旦完成，<code>result</code>属性中将包含一个<code>data:</code> URL格式的字符串以表示所读取文件的内容。</strong>也解了我对于这个方法的作用的疑惑。</p>
+<p>破案啦破案啦<del>撒花</del></p>
+</li>
+</ol>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/07/26/移动端开发记录/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
