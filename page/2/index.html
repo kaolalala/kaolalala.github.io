@@ -1,694 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
 </head>
-</html>
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-jsNote5" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/15/jsNote5/" class="article-date">
-  <time datetime="2019-07-15T13:34:06.000Z" itemprop="datePublished">2019-07-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/15/jsNote5/">jsNote5</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h4><ul>
-<li>闭包是指有权访问另一个函数作用域中的变量的函数。</li>
-<li>后台的每个执行环境都有一个表示变量的对象——变量对象。执行环境中定义的所有变量和函数都保存在这个对象里。</li>
-<li>作用域链本质上使一个指向变量对象的指针列表，它只引用但不实际包含变量对象。</li>
-<li>闭包只能取得包含函数中任何变量的最后一个值。</li>
-<li>匿名函数的执行环境具有全局性，因此其<code>this</code>对象通常指向<code>window</code>。</li>
-<li>JavaScript中没有私有成员的概念，所有对象属性都是公有的。不管在任何函数中定义的变量，都可以认为是私有变量。有权访问私有变量和私有函数的公有方法称为特权方法。</li>
-</ul>
-
-      
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            
+    <div class="container">
+    <div class="intro">
+        <div class="avatar">
+            <a href="/archives"><img src="/image/avatar.jpeg"></a>
+        </div>
+        <div class="nickname">Jeremy Bentham</div>
+        <div class="description"><p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> <br>Fusce eget urna vitae velit <em>eleifend interdum at ac</em> nisi.</p>
+</div>
+        <div class="links">
+            
+                
+                    <a class="link-item" title="Blog" href="/">
+                        
+                        
+                            <i class="iconfont icon-blog"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="ZhiHu" href="https://www.zhihu.com/people/sirice">
+                        
+                        
+                            <i class="iconfont icon-zhihu"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Instagram" href>
+                        
+                        
+                            <i class="iconfont icon-instagram"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Reddit" href>
+                        
+                        
+                            <i class="iconfont icon-reddit"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Github" href="https://github.com/Siricee">
+                        
+                        
+                            <i class="iconfont icon-github"></i>
+                        
+                    </a>
+                
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/15/jsNote5/" data-id="cjyk5l7zg000vc4utw9m1e7lq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
-  
-    <article id="post-随笔" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/14/随笔/" class="article-date">
-  <time datetime="2019-07-14T12:26:02.000Z" itemprop="datePublished">2019-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/随笔/">随笔</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​        今天是来工作室培训的第七天（算上中间昨天放假）。</p>
-<p>​        这个暑假可能是难得的有一整块培训的时间。其实我觉得一个月可能会有点短，但是也觉得该回家一趟。所以下个月还是会回家一段时间，希望回家了也能静得下心来学习吧。</p>
-<p>​        这两天一直在看高程，有些地方还是有点绕的，希望能赶紧看完，但是主要还是想理解的透彻一点。在未来的学习生涯我更希望把基础打好，最想培养的是持续学习的能力，感觉其中基础扎实很重要，也才能支持我将来走的更远。</p>
-<p>​        每天在这里过的都快乐又愧疚，快乐是觉得氛围真的很好，环境也很舒适，我前两天甚至过上了养生的生活，每天也能有学习的时间。愧疚的是感觉我还不够认真，每天学习的时长好像不够多，但是在规定时间外我真的很难使自己静下心来学习，希望接下来能更好的约束自己吧。</p>
-
-      
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© John Doe | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/随笔/" data-id="cjyk5l7zf000tc4utslyfcj85" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jsNote4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/12/jsNote4/" class="article-date">
-  <time datetime="2019-07-12T13:38:17.000Z" itemprop="datePublished">2019-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/12/jsNote4/">jsNote4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><code>sort(比较函数)</code>方法的内部原理是冒泡排序。</li>
-<li><code>slice()</code>方法包含起始位置的项，不包含结束位置的项。</li>
-<li>使用迭代方法注意浏览器是否支持。</li>
-<li><code>Date</code>类型保存的日期能够精确到1970年1月1日之前或之后的100,000,000年。</li>
-<li>正则表达式字面量始终会共享同一个RegExp实例，而使用构造函数创建的每一个新的RegExp实例都是一个新实例。</li>
-<li>在正则表达式模式中是否使用g决定了<code>exec()</code>方法能否查找到多个匹配项，若是不使用则将始终返回第一个匹配项的信息，若是使用则每次调用都会在字符串中查找新的匹配信息。</li>
-<li>使用不带圆括号的函数名是访问函数指针，而非调用函数。</li>
-<li>不要再严格模式下使用<code>callee</code>和<code>caller</code>属性。</li>
-<li>在ECMAScript5中，<code>prototype</code>属性是不可枚举的，因此在使用<code>for-in</code>时无法发现。</li>
-<li>引用类型和基本包装类型的主要区别就是对象的生存期，使用<code>new</code>操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间。</li>
-<li>布尔表达式中的所有对象都会被转换成<code>true</code>。建议不要使用<code>Boolean</code>对象。</li>
-<li>数据属性：<code>Configurable</code>，<code>Enumerable</code>，<code>Writable</code>，<code>Value</code>。</li>
-<li>一旦把属性定义为不可配置的，就不能再把它变为可配置的了。可以多次调用<code>Object.defineProperty()</code>方法修改同一属性，但在把<code>configurable</code>特性设置为<code>false</code>之后就会有限制了。</li>
-<li>在调用<code>Object.defineProperty()</code>方法时，如果不指定，<code>configurable</code>、<code>enumerable</code>和<code>writable</code>特性的默认值都是<code>false</code>。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/12/jsNote4/" data-id="cjyk5l7zc000oc4utxq55mbri" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jsNote3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/11/jsNote3/" class="article-date">
-  <time datetime="2019-07-11T13:21:27.000Z" itemprop="datePublished">2019-07-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/jsNote3/">jsNote3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>ECMAScript中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</p>
-</li>
-<li><p><code>for-in</code>语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for (property in expression) statement</span><br></pre></td></tr></table></figure>
-
-<p>一种精确的迭代语句，可以用来枚举对象的属性。</p>
-<p>如果表示要迭代的对象的变量值为<code>null</code>或<code>undefined</code>，<code>for-in</code>语句会抛出错误。ECMAScript5更正了这一行为，对这种情况不再抛出错误，而只是不执行循环体。</p>
-</li>
-<li><p><code>label</code>语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label: statement</span><br></pre></td></tr></table></figure>
-
-<p>使用该语句可以在代码中添加标签，以便将来使用。</p>
-<p>加标签的语句一般都要与<code>for</code>语句等循环语句配合使用。、</p>
-</li>
-<li><p><code>break</code>和<code>continue</code>语句都可以与<code>label</code>语句联合使用，比如可以使用标签一次跳出多层的嵌套循环。</p>
-</li>
-<li><p><code>with</code>语句的作用是将代码的作用域设置到一个特定的对象中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">with (expression) statement</span><br></pre></td></tr></table></figure>
-
-<p>比如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var qs = location.search.substring(1);</span><br><span class="line">var hostName = location.hostName;</span><br><span class="line">var url = location.href;</span><br></pre></td></tr></table></figure>
-
-<p>可以改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with(location)&#123;</span><br><span class="line">	var qs = search.substring(1);</span><br><span class="line">	var hostName = hostName;</span><br><span class="line">	var url = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>严格模式下不允许使用<code>with</code>语句，否则将视为语法错误。也不建议使用这个语句。</p>
-</li>
-<li><p>使用<code>switch</code>语句时记得加<code>break;</code>。可以在<code>switch</code> 语句中使用任何数据类型。该语句在比较值的时候使用的是全等操作符，因此不会发生类型转换。</p>
-</li>
-<li><p>ECMAScript中的参数在内部是用一个数组来表示的，函数接收到的始终都是这个数组，而不关心数组中包含哪些参数（如果有参数的话）</p>
-<p><code>arguments</code>对象只能在函数中使用。</p>
-<p><code>arguments</code>的值永远与对应命名参数的值保持同步。但它们的内存空间是独立的。</p>
-</li>
-<li><p>函数不能重载。</p>
-</li>
-<li><p>基本类型—-&gt;栈，引用类型—-&gt;堆</p>
-</li>
-<li><p>函数的参数都是按值传递的，即使是引用类型也是传递了指针的值进去。相当于复制了实参的值给形参，函数内部改变的只是形参的值。但当传递引用类型的值进函数时，对形参的操作可能会影响到传进去的那个实参，是因为形参和实参指向的都是堆中的同一个地址。函数内对形参的操作实际上就是在对堆里面那块内存动手脚。</p>
-</li>
-<li><p><code>instanceof()</code>用来检测对象的类型。</p>
-<p>语法：<code>result = variable instanceof constructor</code></p>
-</li>
-<li><p>所有引用类型的值都是Object的实例。</p>
-</li>
-<li><p>每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量和函数都保存在这个对象中。某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁。</p>
-</li>
-<li><p>当代码在一个环境中执行时，会创建变量对象的一个作用域链。用途是保证对执行环境有权访问的所有变量和函数的有序访问。内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数。</p>
-</li>
-<li><p>使用<code>var</code>声明的变量会自动被添加到最接近的环境中。如果初始化变量是没有使用<code>var</code>声明，该变量会自动添加到全局环境。</p>
-</li>
-<li><p>如果局部环境中存在着同名标识符，就不会使用位于父环境中的标识符。</p>
-</li>
-<li><p>引用计数的垃圾清除算法可能会出现循环引用，无法释放内存。</p>
-</li>
-<li><p>只要在IE中涉及COM对象，就会存在循环引用的问题。IE9将BOM和DOM对象转化成立真正的JavaScript对象，避免了两种垃圾收集算法并存导致的问题。</p>
-</li>
-<li><p>浏览器的垃圾收集器是周期性运行的，触发机制不同浏览器可能会有差异。在IE中可以用<code>window.CollectGarbage()</code>是垃圾收集立刻执行，在Opera7及更高版本中，调用<code>window.opera.collect()</code>也可以启动垃圾收集例程。但不建议程序员主动触发垃圾收集过程。</p>
-</li>
-<li><p>一旦数据不再有用，最好通过将其值设置为<code>null</code>来释放其引用，这个做法叫做解除引用。解除引用的真正作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。适用于大多数全局变量和全局对象的属性。为执行中的代码只保存必要的数据是优化内存占用的最佳方式。</p>
-</li>
-<li><p>表达式上下文指的是该上下文期待一个值（表达式）。</p>
-</li>
-<li><p>在使用方括号语法时，应该将要访问的属性以字符串的形式放在方括号内。</p>
-</li>
-<li><p><code>join()</code>方法可以指定数组元素输出为字符串时的分隔符。</p>
-</li>
-<li><p>数组的<code>pop()</code>方法返回的是取得的值，<code>push()</code>方法返回的数组长度。</p>
-</li>
-<li><p>用<code>shift()</code>和<code>push()</code>方法可以实现类似于队列先进先出的数据结构。<code>unshift()</code>和<code>pop()</code>可以实现与队列相反的操作，队头进，队尾出。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/11/jsNote3/" data-id="cjyk5l7z2000gc4utnihjbtix" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jsNote2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/10/jsNote2/" class="article-date">
-  <time datetime="2019-07-10T13:43:30.000Z" itemprop="datePublished">2019-07-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/jsNote2/">jsNote2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>虽然JavaScript中可以不用分号来结尾（由解析器确定语句的结尾），但是建议任何时候都不要省略分号在语句结束处。好处是增加代码可读性、可以删去不必要的空格来节约空间、增进代码的性能（节约解析器推测语句结尾的时间）</p>
-</li>
-<li><p>关键字和保留字（将来有可能被用作关键字）不能用作标识符。</p>
-<p>在实现ECMAScript3的JavaScript引擎中如果使用关键字作为标识符，会导致<code>&quot;Identifier Expected&quot;</code>错误。而使用保留字作标识符可能会也可能不会导致相同的错误，具体取决于特定的引擎。</p>
-</li>
-<li><p>变量定义后若还未赋值，则会保存一个特殊的值<code>undefined</code>。</p>
-</li>
-<li><p>用<code>var</code>定义的变量将成为定义该变量的作用域中的局部变量。即如果在函数中用<code>var</code>定义了变量，该变量在函数退出后就会被销毁。如果省略<code>var</code>操作符，则可以之间创建一个全局变量，在函数退出后该变量依旧有效。</p>
-<p>要注意的是，要先让创建全局变量所在的函数中执行过一次后该变量才会生效，否则变量为未定义。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">    message = &quot;hi&quot;;		//全局变量</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message);			//&quot;hi&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">    message = &quot;hi&quot;;		//全局变量</span><br><span class="line">&#125;</span><br><span class="line">alert(message);			//Uncaught ReferenceError: message is not defined</span><br></pre></td></tr></table></figure>
-
-<p>可以看到在第二个例子中<code>alert</code>函数处报错了，因为在<code>alert</code>函数使用<code>message</code>前，<code>test</code>函数还未执行过，就是说<code>message = &quot;hi&quot;;</code>还未执行过，相当于<code>message</code>还未定义。</p>
-</li>
-<li><p>如果一个值是<code>null</code>，使用<code>typeof</code>操作符返回的结果也会是<code>object</code>。因为特殊值<code>null</code>被认为是一个空的对象引用（空对象指针）。</p>
-<p>Safari 5及之前版本、Chrome 7及之前版本在对正则表达式调用<code>typeof</code>操作符是会返回<code>&quot;function&quot;</code>，而其他浏览器在这种情况下会返回<code>&quot;object&quot;</code>。</p>
-</li>
-<li><p>对于尚未声明的变量只能进行一项操作，即使用<code>typeof</code>操作符检测其数据类型，返回<code>&quot;undefined&quot;</code>。</p>
-</li>
-<li><p>如果定义的变量准备在将来用于保存对象，最好将该变量初始化为<code>null</code>而不是其他值。</p>
-</li>
-<li><p>严格模式下不支持八进制字面量。</p>
-</li>
-<li><p>ECMAScript会自动将本身表示的就是一个整数的浮点数比如<code>1.0</code>、<code>1.</code>作为整数保存以节约空间。也会将小数点后面带有6个零以上的浮点数值转换为以e表示法表示的数值。</p>
-</li>
-<li><p>永远不要测试某个特定的浮点数值，因为基于IEEE754数值的浮点计算会由舍入误差。</p>
-</li>
-<li><p>如果一个数的数值超出了JavaScript的数值范围，那么这个数值会被自动转换成<code>(-)Infinity</code>表示正（负）无穷。<code>Infinity</code>不是能够参与计算的值。可以使用<code>isFinite()</code>函数来确定一个数值是不是有穷的。这个函数在参数位于最小和最大数值之间时会返回<code>true</code>。</p>
-</li>
-<li><p><code>NaN</code>表示一个本来要返回数值的操作数未返回数值的情况。</p>
-<p>任何涉及<code>NaN</code>的操作都会返回<code>NaN</code>。</p>
-<p><code>NaN</code>与任何值都不相等包括它本身，可用<code>isNaN</code>函数来判断一个值是不是<code>NaN</code>。函数在接收到一个值后，会尝试将这个值转换为数值，某些不是数值的数也可以转换为数值比如字符串<code>&quot;10&quot;</code>。任何不能转换为数值的值都会导致这个函数返回<code>true</code>。</p>
-</li>
-<li><p><code>toString()</code>方法和<code>String()</code>函数的区别</p>
-</li>
-<li><p><code>toString()</code>方法和<code>toLocaleString()</code>方法的区别</p>
-</li>
-<li><p><code>toString()</code>方法和<code>valueOf()</code>方法的区别</p>
-</li>
-<li><p>一元加操作符会像<code>Number()</code>转型函数一样对值进行数值转换。</p>
-</li>
-<li><p>按位非<code>~</code>操作的本质：操作数的负值减1。</p>
-</li>
-<li><p>左移<code>&lt;&lt;</code>和右移<code>&gt;&gt;</code>不会影响操作数的符号位。无符号右移<code>&gt;&gt;&gt;</code>会连带符号位一起移动。</p>
-</li>
-<li><p>逻辑与（或）操作不一定返回布尔值，不能在逻辑与（或）操作中使用未定义的值（但如果发生短路操作且未定义的值是第二个操作数，则不会报错）。逻辑与（或）属于短路操作，如果第一个值是<code>false</code>（<code>true</code>），则不会再对第二个操作数进行求值。</p>
-</li>
-<li><p>如果要按字母表顺序比较字符串，就必须把两个操作数转换为相同的大小写形式，再执行比较。如使用<code>toLowerCase()</code>方法。</p>
-</li>
-<li><p>在比较数字和字符串的时候，字符串都会被转换成数值，然后再以数值方式与另一个数值比较。任何数值和<code>NaN</code>进行关系比较，结果都是<code>false</code>。</p>
-</li>
-<li><p>相等操作符在比较之前进行转换，全等操作度在比较之前不对操作数进行转换。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/10/jsNote2/" data-id="cjyk5l7z1000fc4ut816qulmo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jsNote1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/jsNote1/" class="article-date">
-  <time datetime="2019-07-09T13:38:41.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/jsNote1/">jsNote1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>区分好<code>&lt;script&gt;</code>标签中defer和async两个属性的区别，两个属性都是异步加载文档，只是defer是加载后不立刻执行，等HTML解析完后再执行。async是异步加载，但加载完后会停止解析HTML文档等到JavaScript文件执行完再继续解析HTML。</li>
-</ul>
-<p><img src="/2019/07/09/jsNote1/1.jpg" alt="示意图"></p>
-<blockquote>
-<p>图片来源于网络</p>
-</blockquote>
-<ul>
-<li><p><code>&lt;noscript&gt;</code></p>
-<p>这个标签的内容只有在脚本被禁用或不被浏览器支持的时候才会显示出来，里面可以包含一切能够出现在<code>&lt;body&gt;</code>元素中的元素。</p>
-<p>可以用这个标签在JavaScript不被浏览器支持的时候提醒用户。否则里面的内容永远不会出现在页面中。</p>
-</li>
-<li><p>严格模式</p>
-<p>要在整个脚本中启用严格模式，可以在顶部添加代码：<code>&quot;use strict&quot;;</code>。这是一个编译指示，用于告诉支持的JavaScript引擎切换到严格模式。</p>
-<p>也可以在函数内部的上方包含这条编译指示，指定函数在严格模式下执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function doSomething()&#123;</span><br><span class="line">    &quot;use strict&quot;;</span><br><span class="line">    //函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/jsNote1/" data-id="cjyk5l7yx000bc4utmv288r0c" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-blog1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/blog1/" class="article-date">
-  <time datetime="2019-07-09T07:07:04.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/blog1/">学习安装配置的心得</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>很多时候我们安装某种东西，都不只是从网上下载安装包然后直接顺着一直点下一步就可以完成。往往需要从网上找教程来学习怎么把东西装好。但是大部分时候都很难找到情况和你的电脑一模一样的教程，偶尔会有些避免不了的坑，这个时候我们要怎么办呢？</p>
-</blockquote>
-<ol>
-<li><p>多找几篇教程做比对，越详细越好</p>
-<p>从我之前安装的经验来看，碰到几篇教程的有些步骤不太一样是经常的事。一开始我没经验，看到是篇教程且开头和我的情况差不多就直接照着做，等到安装到中途才发现怎么好像有些步骤被博主理所应当的忽略了。那这时候我已经过了那个步骤了，能补救还好，但有些顺序是一定的，漏了之后只能追悔莫及，那要再花多少时间就看命了。</p>
-<p>因此，吃了几次亏之后我就吸取了一点教训，每次找教程的时候都尽可能多找几篇，而且是找越详细的越好。如果能找到解释每一步的原理的话那更是谢天谢地，至少我知道哪一步是为什么，更有利于我理解不是。也能减少出错率，因为有些配置信息是要根据自身信息来代入的，若是教程里直接叫你输入某个指令但却是根据博主自身信息来写的，没有解释你稀里糊涂的跟着输入了，那简直gg啊。每一步都照着几篇博客对比着来，虽然不能保证不出错，但至少出错率要比你只单纯参照一篇来小得多。若是发现几篇博客写的不一样，再找别的教程，这种时候我建议还是少数服从多数。也可以直接搜索这个步骤的原因，说不定还能学到新的东西。</p>
-</li>
-<li><p>对照好版本号</p>
-<p>有时不同版本号之间的差异还是挺大的，所有在搜教程的时候最好加上自己下载的安装包版本号啊。</p>
-</li>
-<li><p>做好笔记</p>
-<p>如果可以的话，把你下载过程中的每一步都截图保存下来，顺便可以写一篇总结。毕竟别人写的教程和你的实操还是存在差异，尝试着把自己遇到的坑或者是每个步骤记录下来，也许以后需要重装的时候就不需要再去找教程了，甚至还可以帮助到身边的朋友哦。</p>
-</li>
-<li><p>利用错误信息</p>
-<p>学会利用电脑报给你的错误信息，复制之后直接往搜索框一丢再查一查，解决方法还蛮多的。虽然不一定有用哈哈哈，但是试试呗。</p>
-</li>
-<li><p>实在不行我们重新开始</p>
-<p>最简单粗暴的解决挫折方法大概就是重头再来了。安装的时候最好挑好你安装的路径并记住，有条理一点的安装对于你之后整理文件或者删除之类的操作会很有帮助。</p>
-<p>有时候真的明明就觉得和网上做的一模一样但是谜之就是出了错。怎么找都找不到原因，这种时候我建议你把之前下载的东西删掉，从头跟着教程来一遍，虽然这种方法比较傻瓜了点，但是相对有效。记得把之前下载的东西都删干净了再重新开始，不然保不齐你之前做的哪些操作就是罪魁祸首呢。</p>
-</li>
-<li><p>休息一下再战</p>
-<p>也许重装好几次都解决不了，那别纠结了。先睡一觉或者干点其他事情，隔段时间再来继续。说起来莫名玄学，但是我确实有好几次就是这么成功了，睡觉前怎么弄都不成功，睡一觉起来照着教程再做一遍就success了。</p>
-</li>
-<li><p>可以适当求助他人帮助</p>
-<p>其实学做这些东西的时候最爽的就是旁边有个大牛指导，不但帮你解决困难还能清清楚楚的告诉你每一步的原因。但是这个做法建议谨慎使用，自己多尝试几次之后实在不行再试着去找别人帮忙。因为偶尔别人会有自己要紧的事，也没法一直在你身边指导你，老是麻烦别人也是会有些不好意思的嘛。自己查资料去解决还有一个好处，就是提升自我学习的能力，自己实实在在踩过的坑才理解得更深刻，查资料过程中说不定还有意外的收获，比如了解到相关方面的其他知识，虽然那种一直解决不了的滋味实在难受，但是加油哈哈哈。</p>
-<p>实在无法解决就去找别人帮忙呗，也不用觉得拉不下面子，知识分享是双赢的。</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/blog1/" data-id="cjyk5l7xo0006c4ut42ggdwpv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/foot/">foot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/hello-world/" class="article-date">
-  <time datetime="2019-07-09T02:08:59.176Z" itemprop="datePublished">2019-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/hello-world/" data-id="cjyk5l7z6000kc4utdo69vfuy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScriptLearning/">JavaScriptLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/foot/">foot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ES6/" style="font-size: 16.67px;">ES6</a> <a href="/tags/JavaScriptLearning/" style="font-size: 20px;">JavaScriptLearning</a> <a href="/tags/foot/" style="font-size: 10px;">foot</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/移动端/" style="font-size: 13.33px;">移动端</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/07/26/移动端开发记录/">移动端开发记录</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/25/jQyery-2/">jQyery_2</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/24/移动端适应开发坑/">移动端适应开发坑</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/jQuery-1/">jQuery_1</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/22/ES6four/">ES6four</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
+
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
 </html>
