@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>node写登陆注册小例子 | Kaola</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="node,">
+  
+
+  <meta name="description" content="试着写一个登陆注册的样本 这两天跟着视频学node，视频里写了一个登陆注册的小demo。看的时候每一步都能看懂，写起来才发现困难重重。   Node.js是一个基于Chrome V8引擎的JavaScript运行环境（百度百科）。往常我们要运行JavaScript代码都需要一个解释器（例如浏览器），但是用node.js有所不同，它可以让JavaScript运行在服务端。我们可以使用它来搭建服务器做">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node写登陆注册小例子">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/node-regLogin-demo/index.html">
+<meta property="og:site_name" content="Kaola">
+<meta property="og:description" content="试着写一个登陆注册的样本 这两天跟着视频学node，视频里写了一个登陆注册的小demo。看的时候每一步都能看懂，写起来才发现困难重重。   Node.js是一个基于Chrome V8引擎的JavaScript运行环境（百度百科）。往常我们要运行JavaScript代码都需要一个解释器（例如浏览器），但是用node.js有所不同，它可以让JavaScript运行在服务端。我们可以使用它来搭建服务器做">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/08/03/node-regLogin-demo/flowchart.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/03/node-regLogin-demo/list.png">
+<meta property="og:updated_time" content="2019-08-02T16:24:51.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node写登陆注册小例子">
+<meta name="twitter:description" content="试着写一个登陆注册的样本 这两天跟着视频学node，视频里写了一个登陆注册的小demo。看的时候每一步都能看懂，写起来才发现困难重重。   Node.js是一个基于Chrome V8引擎的JavaScript运行环境（百度百科）。往常我们要运行JavaScript代码都需要一个解释器（例如浏览器），但是用node.js有所不同，它可以让JavaScript运行在服务端。我们可以使用它来搭建服务器做">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/03/node-regLogin-demo/flowchart.png">
+
+  
+
+  
+    <link rel="icon" href="bitbug_favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#试着写一个登陆注册的样本"><span class="toc-text">试着写一个登陆注册的样本</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-node-regLogin-demo" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">node写登陆注册小例子</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.08.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>kaolalala</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="试着写一个登陆注册的样本"><a href="#试着写一个登陆注册的样本" class="headerlink" title="试着写一个登陆注册的样本"></a>试着写一个登陆注册的样本</h2><blockquote>
+<p>这两天跟着视频学node，视频里写了一个登陆注册的小demo。看的时候每一步都能看懂，写起来才发现困难重重。</p>
+</blockquote>
+<ul>
+<li><p><code>Node.js</code>是一个基于<code>Chrome V8</code>引擎的<code>JavaScript</code>运行环境（百度百科）。往常我们要运行JavaScript代码都需要一个解释器（例如浏览器），但是用<code>node.js</code>有所不同，它可以让JavaScript运行在服务端。我们可以使用它来搭建服务器做后台，且语法与JavaScript相同，较为方便前端开发人员学习。</p>
+</li>
+<li><p>当代码很多的时候就涉及到了代码拆分的思想，便于维护与管理。其中node的模块（module）就实现了这方面的功能。node本身就提供了一些内置模块，无需下载在文件中直接用<code>require</code>引用即可，在这次要实现的登陆注册例子中我要用到的是以下几个模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);				<span class="comment">//用于创建http server服务</span></span><br><span class="line"><span class="keyword">const</span> urlLib = <span class="built_in">require</span>(<span class="string">'url'</span>);				<span class="comment">//用于解析url</span></span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">'querystring'</span>);	<span class="comment">//用于对http请求所带的数据进行解析</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);					<span class="comment">//用于操作文件</span></span><br></pre></td></tr></table></figure>
+
+<p>引入了上面几个模块就能帮助我完成一些很基础很基础的功能啦。</p>
+<ol>
+<li><p>理一下思路与结构</p>
+<p><img src="/2019/08/03/node-regLogin-demo/flowchart.png" alt></p>
+<p>以上是处理登陆注册请求的一个简易流程。其中我用到的是Ajax的请求，则有可能产生一个跨域问题，因此我的HTML界面也要通过服务器得到而不是只在文件中打开。所以在判断请求时还要先加一个请求的是否是文件的判断。如果是文件则根据路径读取相关文件返回前台，若是处理登陆注册的则按上面流程图的步骤去处理。</p>
+</li>
+<li><p>GET和POST</p>
+<p>常用的请求方式有GET和POST两种。GET会把请求的信息附带在URL中发送给服务器且有长度限制，而POST是把请求的信息放在请求体中，不会在URL中显示出来并且没有长度限制。后台对于这两种请求的数据解析方法也有所不同。</p>
+<p>引入的模块参照上文。</p>
+<p>对于GET：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = urlLib.parse(req.url, <span class="literal">true</span>);		</span><br><span class="line"><span class="comment">//用于解析url，其中第二个参数为true表示将里面的查询模块（query）转化为对象</span></span><br><span class="line"><span class="keyword">let</span> url = obj.pathname;						<span class="comment">//获取接口</span></span><br><span class="line"><span class="keyword">let</span> GET = obj.query;						<span class="comment">//获取查询信息</span></span><br></pre></td></tr></table></figure>
+
+<p>对于POST：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">req.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;		</span><br><span class="line">    <span class="comment">//由于POST的数据量没有限制，因此有可能不是一次性发送完成，data监听每一次的数据传送</span></span><br><span class="line">    str += data;</span><br><span class="line">&#125;);</span><br><span class="line">req.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//end是监听数据发送完成的事件</span></span><br><span class="line">    <span class="keyword">let</span> POST = querystring.parse(str);		</span><br><span class="line">    <span class="comment">//解析传送过来的查询信息并存放在PPOST变量中</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>前端发送请求可能采取POST方法或GET方法，后台需要先做出判断，为了方便，我将两种方法的数据用一个变量来保存。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(POST)&#123;</span><br><span class="line">    GET = POST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的语句是在用POST传递数据的情况下，把查询信息赋给GET，在接下来的语句中全部针对GET变量进行操作。这样就可以不用分别针对两种情况分别写方法。</p>
+</li>
+<li><p>处理文件</p>
+<p>因为对于HTML页面的请求也要在服务器上进行，所以在后台也要写一下处理文件请求的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//url参照上文对GET请求的处理，由于url如果请求的是文件的话，一般格式是'/1.html'这种，所以要做个处理（使用split方法），提取出'1.html'这个文件名。</span></span><br><span class="line"><span class="keyword">let</span> file_name = url.split(<span class="string">'/'</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="comment">//fs参照上文引入的模块</span></span><br><span class="line">fs.readFile(file_name, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;		</span><br><span class="line">        res.write(file_name);</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;			<span class="comment">//如果读取文件成功，则将文件内容返回前台</span></span><br><span class="line">        res.write(data);</span><br><span class="line">    &#125;</span><br><span class="line">    res.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完善代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入模块</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> urlLib = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">'querystring'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//临时储存用户信息的变量</span></span><br><span class="line"><span class="keyword">let</span> users = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//搭建服务器</span></span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//存放POST的请求数据</span></span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">''</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//读取POST的请求数据</span></span><br><span class="line">    req.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">       str += data;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//数据读取完成</span></span><br><span class="line">    req.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//解析GET数据</span></span><br><span class="line">        <span class="keyword">let</span> obj = urlLib.parse(req.url, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取接口信息</span></span><br><span class="line">        <span class="keyword">const</span> url = obj.pathname;</span><br><span class="line">        <span class="comment">//得到查询信息并都存放入GET变量中</span></span><br><span class="line">        <span class="keyword">let</span> GET = obj.query;</span><br><span class="line">        <span class="keyword">let</span> POST = querystring.parse(str);</span><br><span class="line">        <span class="keyword">if</span>(POST)&#123;</span><br><span class="line">            GET = POST;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//判断接口</span></span><br><span class="line">        <span class="keyword">if</span>(url == <span class="string">'/user'</span>)&#123;</span><br><span class="line">            <span class="comment">//判断操作类型——登录/注册</span></span><br><span class="line">            <span class="keyword">switch</span>(GET.act)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'reg'</span>:</span><br><span class="line">                    <span class="comment">//1.检查用户名是否存在</span></span><br><span class="line">                    <span class="keyword">if</span>(users[GET.user])&#123;</span><br><span class="line">                        res.write(<span class="string">"&#123;'ok': false, 'msg': '用户名已存在'&#125;"</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="comment">//2.插入用户名</span></span><br><span class="line">                        users[GET.user] = GET.pass;</span><br><span class="line">                        res.write(<span class="string">"&#123;'ok': true, 'msg': '注册成功'&#125;"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'login'</span>:</span><br><span class="line">                    <span class="comment">//1.检查用户名是否存在</span></span><br><span class="line">                    <span class="keyword">if</span>(!users[GET.user])&#123;</span><br><span class="line">                        res.write(<span class="string">"&#123;'ok': false, 'msg': '用户名不存在'&#125;"</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(users[GET.user] != GET.pass)&#123;     </span><br><span class="line">                        <span class="comment">//2.检查密码</span></span><br><span class="line">                        res.write(<span class="string">"&#123;'ok': false, 'msg': '密码错误'&#125;"</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                        res.write(<span class="string">"&#123;'ok': true, 'msg': '登陆成功'&#125;"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="comment">//两种情况都不是</span></span><br><span class="line">                    res.write(<span class="string">"&#123;'ok': false, 'msg': '无效请求'&#125;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            res.end();</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//请求文件</span></span><br><span class="line">            <span class="keyword">let</span> file_name = url.split(<span class="string">'/'</span>)[<span class="number">1</span>];</span><br><span class="line">            fs.readFile(file_name, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                    res.write(file_name);</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    res.write(data);</span><br><span class="line">                &#125;</span><br><span class="line">                res.end();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//监听8081端口</span></span><br><span class="line">server.listen(<span class="number">8081</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前端代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/引入jQuery文件</span></span><br><span class="line"><span class="regexp">    &lt;script src="jquery-3.4.1.js"&gt;&lt;/</span>script&gt;</span><br><span class="line">	<span class="comment">//脚本，因为只是个小demo所以卸载HTML文件哩，一般建议脚本分离</span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//注册按钮被点击</span></span><br><span class="line">        $(<span class="string">'#reg_btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            <span class="comment">//定义接口</span></span><br><span class="line">            url: <span class="string">'/user'</span>,</span><br><span class="line">            <span class="comment">//请求方式</span></span><br><span class="line">            type: <span class="string">'post'</span>,</span><br><span class="line">            <span class="comment">//传输的数据</span></span><br><span class="line">            data: &#123;<span class="attr">act</span>:<span class="string">'reg'</span>, <span class="attr">user</span>: $(<span class="string">'#user'</span>).val(), <span class="attr">pass</span>: $(<span class="string">'#pass'</span>).val()&#125;,</span><br><span class="line">            <span class="comment">//数据传输成功</span></span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>)</span>&#123;</span><br><span class="line">                <span class="comment">//解析后台传回来的数据</span></span><br><span class="line">                <span class="keyword">let</span> json = <span class="built_in">eval</span>(<span class="string">'('</span> + data + <span class="string">')'</span>);</span><br><span class="line">                <span class="comment">//判断操作是否成功</span></span><br><span class="line">                <span class="keyword">if</span>(json.ok)&#123;</span><br><span class="line">                    alert(<span class="string">'注册成功'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    alert(<span class="string">'注册失败：'</span> + json.msg);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">//数据传输不过去</span></span><br><span class="line">            error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">                alert(<span class="string">'连接失败'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//点击登录按钮</span></span><br><span class="line">    $(<span class="string">'#login_btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url: <span class="string">'/user'</span>,</span><br><span class="line">            type: <span class="string">'post'</span>,</span><br><span class="line">            data: &#123;<span class="attr">act</span>: <span class="string">'login'</span>, <span class="attr">user</span>: $(<span class="string">'#user'</span>).val(), <span class="attr">pass</span>: $(<span class="string">'#pass'</span>).val()&#125;,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">let</span> json = <span class="built_in">eval</span>(<span class="string">'('</span> + data + <span class="string">')'</span>);</span><br><span class="line">                <span class="keyword">if</span>(json.ok)&#123;</span><br><span class="line">                    alert(<span class="string">'登录成功'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    alert(<span class="string">'登录失败：'</span> + json.msg);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                alert(<span class="string">'连接失败'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    用户：&lt;input type=<span class="string">"text"</span> name=<span class="string">"user"</span> id=<span class="string">"user"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></span><br><span class="line">    密码：&lt;input type="password" name="pass" id="pass"&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type="button" value="登录" name="login" id="login_btn"&gt;</span><br><span class="line">    &lt;input type="button" value="注册" name="reg" id="reg_btn"&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>补充一下目录结构</p>
+<p><img src="/2019/08/03/node-regLogin-demo/list.png" alt></p>
+<p>这里的目录结构和上文的请求文件写法有关，如果请求的文件是在文件夹内，则需要加上对应的文件路径。</p>
+</li>
+</ol>
+</li>
+<li><p>一个简易的demo就完成啦~~</p>
+</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/07/29/7-29/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
