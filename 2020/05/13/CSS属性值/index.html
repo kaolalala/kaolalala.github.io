@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="Kaola">
 <meta property="og:description" content="基础环境：vue  今天在测试一个图片库功能的时候发现了一个CSS的坑。 原本我的思路是这样的，上传图片后后台返回给我一个图片的地址，我在图片库中显示用循环展示得到的图片列表。每个图片有自己的一张卡片，用css的背景图片属性把图片展示出来。  但是当我上传一张名为0 (1).jpg的时候，发现背景图片是空白的，打开控制台也发现style属性不存在了，别的卡片是有的。  这时我把图片地址在新窗口打">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/CSS属性值/%5CCSS%E5%B1%9E%E6%80%A7%E5%80%BC%5C1.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/CSS属性值/%5CCSS%E5%B1%9E%E6%80%A7%E5%80%BC%5C2.png">
-<meta property="og:updated_time" content="2020-05-13T02:37:02.031Z">
+<meta property="og:image" content="http://yoursite.com/2020/05/13/CSS属性值/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/13/CSS属性值/2.png">
+<meta property="og:updated_time" content="2020-05-13T02:49:04.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS属性值">
 <meta name="twitter:description" content="基础环境：vue  今天在测试一个图片库功能的时候发现了一个CSS的坑。 原本我的思路是这样的，上传图片后后台返回给我一个图片的地址，我在图片库中显示用循环展示得到的图片列表。每个图片有自己的一张卡片，用css的背景图片属性把图片展示出来。  但是当我上传一张名为0 (1).jpg的时候，发现背景图片是空白的，打开控制台也发现style属性不存在了，别的卡片是有的。  这时我把图片地址在新窗口打">
-<meta name="twitter:image" content="http://yoursite.com/2020/05/13/CSS属性值/%5CCSS%E5%B1%9E%E6%80%A7%E5%80%BC%5C1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/13/CSS属性值/1.png">
 
   
 
@@ -218,9 +218,9 @@ ga('send', 'pageview');
 </blockquote>
 <p>今天在测试一个图片库功能的时候发现了一个CSS的坑。</p>
 <p>原本我的思路是这样的，上传图片后后台返回给我一个图片的地址，我在图片库中显示用循环展示得到的图片列表。每个图片有自己的一张卡片，用css的背景图片属性把图片展示出来。</p>
-<p><img src="/2020/05/13/CSS属性值/%5CCSS%E5%B1%9E%E6%80%A7%E5%80%BC%5C1.png" alt="image-20200513005657932"></p>
+<p><img src="/2020/05/13/CSS属性值/1.png" alt="image-20200513005657932"></p>
 <p>但是当我上传一张名为<code>0 (1).jpg</code>的时候，发现背景图片是空白的，打开控制台也发现<code>style</code>属性不存在了，别的卡片是有的。</p>
-<p><img src="/2020/05/13/CSS属性值/%5CCSS%E5%B1%9E%E6%80%A7%E5%80%BC%5C2.png" alt="image-20200513100915291"></p>
+<p><img src="/2020/05/13/CSS属性值/2.png" alt="image-20200513100915291"></p>
 <p>这时我把图片地址在新窗口打开，发现是可以显示出来的，排除了地址错误的问题。</p>
 <p>所以可能就是属性值的错了，我改了一下图片名字，把空格去掉，发现是可以的。</p>
 <p>所以得出的结论是CSS属性值里最好不要带空格。我猜如果格式不正确在插值绑定时会直接被vue忽略。连<code>style</code>属性都没有了。</p>
