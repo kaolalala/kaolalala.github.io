@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Vue预渲染实践 | Kaola</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vue,项目优化,">
+  
+
+  <meta name="description" content="Vue预渲染因为vue是JS驱动，在JS没有解析加载完成之前页面无法显示，所以可能会让用户在首页加载时等待时间过长。为了改善这个问题，我思考了一些优化的方法。 SSR服务器端渲染，先把页面在服务器端渲染好再发过来给前端展示，对SEO也有一定好处。只是实现成本太高了，在原有项目的基础上改不方便，对服务器也造成较大压力，所以退而求其次选择了比较容易实现也不会给服务器造成太多负担的预渲染。 预渲染预渲染">
+<meta name="keywords" content="vue,项目优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue预渲染实践">
+<meta property="og:url" content="http://yoursite.com/2020/07/18/Vue预渲染实践/index.html">
+<meta property="og:site_name" content="Kaola">
+<meta property="og:description" content="Vue预渲染因为vue是JS驱动，在JS没有解析加载完成之前页面无法显示，所以可能会让用户在首页加载时等待时间过长。为了改善这个问题，我思考了一些优化的方法。 SSR服务器端渲染，先把页面在服务器端渲染好再发过来给前端展示，对SEO也有一定好处。只是实现成本太高了，在原有项目的基础上改不方便，对服务器也造成较大压力，所以退而求其次选择了比较容易实现也不会给服务器造成太多负担的预渲染。 预渲染预渲染">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-20T16:03:24.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue预渲染实践">
+<meta name="twitter:description" content="Vue预渲染因为vue是JS驱动，在JS没有解析加载完成之前页面无法显示，所以可能会让用户在首页加载时等待时间过长。为了改善这个问题，我思考了一些优化的方法。 SSR服务器端渲染，先把页面在服务器端渲染好再发过来给前端展示，对SEO也有一定好处。只是实现成本太高了，在原有项目的基础上改不方便，对服务器也造成较大压力，所以退而求其次选择了比较容易实现也不会给服务器造成太多负担的预渲染。 预渲染预渲染">
+
+  
+
+  
+    <link rel="icon" href="/bitbug_favicon">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue预渲染"><span class="toc-text">Vue预渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR"><span class="toc-text">SSR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预渲染"><span class="toc-text">预渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打包后在本地页面查看效果"><span class="toc-text">打包后在本地页面查看效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#踩坑"><span class="toc-text">踩坑</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Vue预渲染实践" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Vue预渲染实践</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.07.18</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>kaolalala</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="Vue预渲染"><a href="#Vue预渲染" class="headerlink" title="Vue预渲染"></a>Vue预渲染</h1><p>因为<code>vue</code>是<code>JS</code>驱动，在<code>JS</code>没有解析加载完成之前页面无法显示，所以可能会让用户在首页加载时等待时间过长。为了改善这个问题，我思考了一些优化的方法。</p>
+<h3 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h3><p>服务器端渲染，先把页面在服务器端渲染好再发过来给前端展示，对<code>SEO</code>也有一定好处。只是实现成本太高了，在原有项目的基础上改不方便，对服务器也造成较大压力，所以退而求其次选择了比较容易实现也不会给服务器造成太多负担的预渲染。</p>
+<h3 id="预渲染"><a href="#预渲染" class="headerlink" title="预渲染"></a>预渲染</h3><p>预渲染利用<code>prerender-spa-plugin</code>插件在原有的项目上做配置，选择部分页面进行预渲染，既不会给服务器造成太多负担也能提到速度，实现成本还低，一举三得！</p>
+<p>下面说说我的实现步骤。</p>
+<blockquote>
+<p>使用的是vue-cli4，所以和网上普遍的配置不太一样。</p>
+</blockquote>
+<ol>
+<li><p>把路由模式改为<code>history</code></p>
+<p>预渲染插件<code>prerender-spa-plugin</code>需要<code>history</code>的路由模式配合。</p>
+<p><code>Vue</code>的路由模式分为<code>hash</code>和<code>history</code>两种，不设置的话默认是<code>hash</code>，这个模式不需要什么配置，不过网页路径会带有一个<code>#</code>，一定程度上影响美观🤣。</p>
+<p>改成<code>history</code>之后会表现得像普通的网页一样，路径之间只有<code>/</code>分隔符。不过<code>history</code>模式需要后台配合设置，在前端只需要一行代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,	<span class="comment">//在原有基础上加上这一行</span></span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>后台需要进行相应的配置，在配置过程有些小坑，这部分主要是后台在踩我也不是很清楚，官网描述挺简洁的。</p>
+<p>这部分可以看官网描述：<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html" target="_blank" rel="noopener">HTML5 History 模式</a></p>
+</li>
+<li><p>下载插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install prerender-spa-plugin --save-d</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>在<code>vue.config.js</code>中进行配置（这个文件可能原本项目中没有，是在我们需要加些额外的配置时自己新建的，就新建在根目录下就好）</p>
+<p>有的教程会写在<code>webpack.prod.conf.js</code>中配置，那是旧版本的写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> Renderer = PrerenderSPAPlugin.PuppeteerRenderer</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    configureWebpack: &#123;</span><br><span class="line">        plugins: [</span><br><span class="line">            <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">                staticDir: path.resolve(__dirname, <span class="string">'dist'</span>),	<span class="comment">//放置打包文件的目录</span></span><br><span class="line">                routes: [ <span class="string">'/'</span>, <span class="string">'/artgallery'</span> ],	<span class="comment">//要进行预渲染的页面路由</span></span><br><span class="line">                renderer: <span class="keyword">new</span> Renderer(&#123;	<span class="comment">//这一步很关键</span></span><br><span class="line">                    renderAfterDocumentEvent: <span class="string">'render-event'</span></span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;)</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>new Renderer</code>里代表渲染的时机的选项有三种，分别是<code>renderAfterTime</code>、<code>renderAfterDocumentEvent</code>和<code>renderAfterElementExists</code>。常用的是前两种，三种里选择一种即可。设置了<code>renderAfterDocumentEvent</code>之后要在<code>main.js</code>里进行相应的配置。</p>
+</li>
+<li><p><code>main.js</code>中的配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  ...	<span class="comment">//原有的配置这里就不写出来了</span></span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="built_in">document</span>.dispatchEvent(<span class="keyword">new</span> Event(<span class="string">'render-event'</span>))	<span class="comment">//这里的事件与vue.config.js中的renderAfterDocumentEvent中的事件对应</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置完后运行<code>npm run build</code>，在<code>dist</code>文件夹中观察有没有对应路由的<code>html</code>文件。比如按照我的预渲染路由配置，打包后<code>dist</code>文件夹中就出现了<code>index.html</code>和<code>artgallery/index.html</code>。</p>
+</li>
+</ol>
+<h3 id="打包后在本地页面查看效果"><a href="#打包后在本地页面查看效果" class="headerlink" title="打包后在本地页面查看效果"></a>打包后在本地页面查看效果</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g serve</span><br><span class="line">cd ./dist</span><br><span class="line">serve</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器看到指定页面即成功。</p>
+<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><p>我用了<code>element-ui</code>这个组件库，为了减小项目体积是按需引入的方法。其中用到了<code>loading</code>这个组件，而且设置了全局覆盖。奇怪的是打包后的<code>html</code>文件中会出现一个<code>&lt;div class=&quot;el-loading-mask is-fullscreen&quot; style=&quot;z-index: 2000;&quot;&gt;&lt;div class=&quot;el-loading-spinner&quot;&gt;&lt;svg viewBox=&quot;25 25 50 50&quot; class=&quot;circular&quot;&gt;&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;20&quot; fill=&quot;none&quot; class=&quot;path&quot;&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;!----&gt;&lt;/div&gt;&lt;/div&gt;</code>标签在脚本引入标签之后，出现在页面中相当于在我整个页面中覆盖了一层遮罩，使得我无法操作页面的动态内容。换了引入方式也没用，于是观察之后我选择每次打包后打开打包好的<code>html</code>文件，把这个元素删掉，就可以解决上述问题。</p>
+<p>另外，在使用<code>v-loading.fullscreen=&quot;fullscreenLoading&quot;</code>这个方式引入<code>loading</code>的时候，我本想加个<code>lock</code>修饰符即<code>v-loading.lock.fullscreen=&quot;fullscreenLoading&quot;</code>使加载动画出来的时候页面无法滚动，但是发现这样会影响到其他未预渲染的页面（失去了滚动条）。去掉<code>lock</code>修饰符之后这个问题就解决了。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/07/14/vue源码（一）——new Vue/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
