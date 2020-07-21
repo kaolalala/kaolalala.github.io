@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>浏览器（1）——Chrome架构 | Kaola</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="浏览器,">
+  
+
+  <meta name="description" content="Chrome架构进程VS线程（进程&amp;gt;线程） 进程是一个程序的运行实例，一个运行环境。 线程无法单独存在，线程是由进程启动和管理的。 线程分为单线程和多线程，多线程即并行处理任务。  特点：  进程中任一线程出错，都会导致进程崩溃。 线程之间互相隔离。 线程之间共享进程数据。 当一个进程关闭之后，系统会回收进程占用的内存资源。（所以如果运行中发生了内存泄漏，进程一关闭内存就释放了） 进程之间互">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器（1）——Chrome架构">
+<meta property="og:url" content="http://yoursite.com/2020/07/21/浏览器（1）——Chrome架构/index.html">
+<meta property="og:site_name" content="Kaola">
+<meta property="og:description" content="Chrome架构进程VS线程（进程&amp;gt;线程） 进程是一个程序的运行实例，一个运行环境。 线程无法单独存在，线程是由进程启动和管理的。 线程分为单线程和多线程，多线程即并行处理任务。  特点：  进程中任一线程出错，都会导致进程崩溃。 线程之间互相隔离。 线程之间共享进程数据。 当一个进程关闭之后，系统会回收进程占用的内存资源。（所以如果运行中发生了内存泄漏，进程一关闭内存就释放了） 进程之间互">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/07/21/浏览器（1）——Chrome架构/%5C%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94Chrome%E6%9E%B6%E6%9E%84%5C%E6%9C%80%E6%96%B0%E7%9A%84Chrome%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84%E5%9B%BE">
+<meta property="og:updated_time" content="2020-07-21T13:48:09.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器（1）——Chrome架构">
+<meta name="twitter:description" content="Chrome架构进程VS线程（进程&amp;gt;线程） 进程是一个程序的运行实例，一个运行环境。 线程无法单独存在，线程是由进程启动和管理的。 线程分为单线程和多线程，多线程即并行处理任务。  特点：  进程中任一线程出错，都会导致进程崩溃。 线程之间互相隔离。 线程之间共享进程数据。 当一个进程关闭之后，系统会回收进程占用的内存资源。（所以如果运行中发生了内存泄漏，进程一关闭内存就释放了） 进程之间互">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/21/浏览器（1）——Chrome架构/%5C%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94Chrome%E6%9E%B6%E6%9E%84%5C%E6%9C%80%E6%96%B0%E7%9A%84Chrome%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84%E5%9B%BE">
+
+  
+
+  
+    <link rel="icon" href="/bitbug_favicon">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chrome架构"><span class="toc-text">Chrome架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程VS线程（进程-gt-线程）"><span class="toc-text">进程VS线程（进程&gt;线程）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发展"><span class="toc-text">发展</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-浏览器（1）——Chrome架构" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">浏览器（1）——Chrome架构</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.07.21</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>kaolalala</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="Chrome架构"><a href="#Chrome架构" class="headerlink" title="Chrome架构"></a>Chrome架构</h1><h2 id="进程VS线程（进程-gt-线程）"><a href="#进程VS线程（进程-gt-线程）" class="headerlink" title="进程VS线程（进程&gt;线程）"></a>进程VS线程（进程&gt;线程）</h2><ul>
+<li>进程是一个程序的运行实例，一个运行环境。</li>
+<li>线程无法单独存在，线程是由进程启动和管理的。</li>
+<li>线程分为单线程和多线程，多线程即并行处理任务。</li>
+</ul>
+<p>特点：</p>
+<ol>
+<li>进程中任一线程出错，都会导致进程崩溃。</li>
+<li>线程之间互相隔离。</li>
+<li>线程之间共享进程数据。</li>
+<li>当一个进程关闭之后，系统会回收进程占用的内存资源。（所以如果运行中发生了内存泄漏，进程一关闭内存就释放了）</li>
+<li>进程之间互相通信采用IPC。</li>
+</ol>
+<h2 id="发展"><a href="#发展" class="headerlink" title="发展"></a>发展</h2><p>以前的浏览器是单进程的，有不稳定（一个线程崩溃整个浏览器崩溃）、不安全（插件、脚本容易获得系统的操作权限）、不流畅（多个模块在一个线程里，无法同时工作，容易内存泄漏）的特点。</p>
+<p>后来发展了多进程的浏览器，进程之间互相隔离使浏览器更稳定，沙箱的概念组织了插件与脚本操作系统本地的权限（上锁）使系统安全，进程隔离之后即使某个进程阻塞也只影响到自己，其他进程可以正常运行使得浏览器更流畅。</p>
+<p><img src="/2020/07/21/浏览器（1）——Chrome架构/%5C%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94Chrome%E6%9E%B6%E6%9E%84%5C%E6%9C%80%E6%96%B0%E7%9A%84Chrome%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84%E5%9B%BE" alt="image-20200721214222312"></p>
+<p><strong>渲染进程</strong>：每个页面占用一个，渲染页面，在沙箱模式下运行。排版引擎<code>Blink</code>和<code>JavaScript</code>引擎<code>V8</code>都是运行在该进程中。</p>
+<p><strong>插件进程</strong>：运行插件的，可以有多个。</p>
+<p><strong>浏览器主进程</strong>：界面显示、用户交互、管理子进程、提供存储功能。</p>
+<p><strong>GPU进程</strong>：实现3D CSS的效果，绘制UI界面。</p>
+<p><strong>网络进程</strong>：负责页面的网络资源加载。</p>
+<p>但因此带来了占用资源过高，难以扩展的问题。所以目前正在向<code>SOA</code>的思想前进，即面向服务架构以适应更高的需求。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/07/18/Vue预渲染实践/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
