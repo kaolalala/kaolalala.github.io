@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>浏览器（3）——从输入URL到页面展示的过程 | Kaola</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="浏览器,">
+  
+
+  <meta name="description" content="从输入URL到页面展示的过程 这好像是一道经典的面试题，结合我看到的教程，整理一下回答。   用户在地址栏输入，浏览器会判断是关键字还是URL。如果是关键字会使用浏览器默认的搜索引擎进行搜索，如果是URL且缺少协议的话，补全协议得到完整的URL进行网络请求。 浏览器进程通过IPC（进程间通信）向网络进程发送请求信息。 网络进程会先查找本地有没有缓存，如果有缓存的话直接获取本地缓存，不用向服务端发起">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器（3）——从输入URL到页面展示的过程">
+<meta property="og:url" content="http://yoursite.com/2020/07/23/浏览器（3）——从输入URL到页面展示的过程/index.html">
+<meta property="og:site_name" content="Kaola">
+<meta property="og:description" content="从输入URL到页面展示的过程 这好像是一道经典的面试题，结合我看到的教程，整理一下回答。   用户在地址栏输入，浏览器会判断是关键字还是URL。如果是关键字会使用浏览器默认的搜索引擎进行搜索，如果是URL且缺少协议的话，补全协议得到完整的URL进行网络请求。 浏览器进程通过IPC（进程间通信）向网络进程发送请求信息。 网络进程会先查找本地有没有缓存，如果有缓存的话直接获取本地缓存，不用向服务端发起">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-23T15:05:17.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器（3）——从输入URL到页面展示的过程">
+<meta name="twitter:description" content="从输入URL到页面展示的过程 这好像是一道经典的面试题，结合我看到的教程，整理一下回答。   用户在地址栏输入，浏览器会判断是关键字还是URL。如果是关键字会使用浏览器默认的搜索引擎进行搜索，如果是URL且缺少协议的话，补全协议得到完整的URL进行网络请求。 浏览器进程通过IPC（进程间通信）向网络进程发送请求信息。 网络进程会先查找本地有没有缓存，如果有缓存的话直接获取本地缓存，不用向服务端发起">
+
+  
+
+  
+    <link rel="icon" href="/bitbug_favicon">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从输入URL到页面展示的过程"><span class="toc-text">从输入URL到页面展示的过程</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-浏览器（3）——从输入URL到页面展示的过程" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">浏览器（3）——从输入URL到页面展示的过程</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.07.23</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>kaolalala</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="从输入URL到页面展示的过程"><a href="#从输入URL到页面展示的过程" class="headerlink" title="从输入URL到页面展示的过程"></a>从输入URL到页面展示的过程</h1><blockquote>
+<p>这好像是一道经典的面试题，结合我看到的教程，整理一下回答。</p>
+</blockquote>
+<ol>
+<li>用户在地址栏输入，浏览器会判断是关键字还是URL。如果是关键字会使用浏览器默认的搜索引擎进行搜索，如果是URL且缺少协议的话，补全协议得到完整的URL进行网络请求。</li>
+<li>浏览器进程通过IPC（进程间通信）向网络进程发送请求信息。</li>
+<li>网络进程会先查找本地有没有缓存，如果有缓存的话直接获取本地缓存，不用向服务端发起请求。</li>
+<li>没有缓存的情况下<ol>
+<li>使用<code>DNS</code>查询系统查找<code>IP</code>地址，如果本地之前有缓存可以直接读取。</li>
+<li>等待<code>TCP</code>连接。</li>
+<li>建立<code>TCP</code>连接。</li>
+<li>发送<code>HTTP</code>请求。</li>
+</ol>
+</li>
+<li>网络进程得到服务器的响应，如果状态码是301/302的话，代表需要重定向，这时将响应头的<code>Location</code>字段中的URL作为目标地址，回到第3步</li>
+<li>如果得到的状态码是200，说明请求成功。</li>
+<li>请求成功之后网络进程分析响应头的内容，其中如果<code>Content-Type</code>的内容是<code>octet-stream</code>，代表是字节流信息，会把相应的内容提交到下载管理器处理。如果是<code>text/html</code>，说明是页面，需要进行渲染。</li>
+<li>是需要渲染的内容的话，浏览器进程会向渲染进程提交文档，网络进程与渲染进程之间建立通道开始传输数据（网络进程传输响应体给渲染进程），传输完成后渲染进程向浏览器进程确认提交。</li>
+<li>确认提交之后浏览器开始更新页面状态，如浏览器前进后退按钮，地址栏，安装状态等。</li>
+<li>接着进入渲染阶段，渲染进程完成后向浏览器进程发送信息，停止加载标签。</li>
+</ol>
+<blockquote>
+<p>如果某个页面是从原有页面的链接打开的，而且是同一站点（协议+根域名相同），会启用同一个渲染进程。</p>
+</blockquote>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/07/23/浏览器（2）——TCP、IP、HTTP/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
