@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>项目优化之webpack的dll打包 | Kaola</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vue,项目优化,">
+  
+
+  <meta name="description" content="一般我们的项目中可能会用到一些库，库的代码大多数时候是不会变化的，如果我们每次打包都需要打包一边这些库的话会有些浪费时间。因此可以统一将这些库打包一次，以后每次打包项目直接用这些打包好的库就好了，提升打包速度。   参考链接：http://www.manongjc.com/detail/17-qacjmzrawplvxxl.html 选择配置的是vue-cli4版本的vue项目。   先在项目根">
+<meta name="keywords" content="vue,项目优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目优化之webpack的dll打包">
+<meta property="og:url" content="http://yoursite.com/2021/02/08/项目优化之webpack的dll打包/index.html">
+<meta property="og:site_name" content="Kaola">
+<meta property="og:description" content="一般我们的项目中可能会用到一些库，库的代码大多数时候是不会变化的，如果我们每次打包都需要打包一边这些库的话会有些浪费时间。因此可以统一将这些库打包一次，以后每次打包项目直接用这些打包好的库就好了，提升打包速度。   参考链接：http://www.manongjc.com/detail/17-qacjmzrawplvxxl.html 选择配置的是vue-cli4版本的vue项目。   先在项目根">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-02-08T13:51:41.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="项目优化之webpack的dll打包">
+<meta name="twitter:description" content="一般我们的项目中可能会用到一些库，库的代码大多数时候是不会变化的，如果我们每次打包都需要打包一边这些库的话会有些浪费时间。因此可以统一将这些库打包一次，以后每次打包项目直接用这些打包好的库就好了，提升打包速度。   参考链接：http://www.manongjc.com/detail/17-qacjmzrawplvxxl.html 选择配置的是vue-cli4版本的vue项目。   先在项目根">
+
+  
+
+  
+    <link rel="icon" href="/bitbug_favicon">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#观察改善效果"><span class="toc-text">观察改善效果</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-项目优化之webpack的dll打包" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">项目优化之webpack的dll打包</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.02.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>kaolalala</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>一般我们的项目中可能会用到一些库，库的代码大多数时候是不会变化的，如果我们每次打包都需要打包一边这些库的话会有些浪费时间。因此可以统一将这些库打包一次，以后每次打包项目直接用这些打包好的库就好了，提升打包速度。</p>
+</blockquote>
+<ul>
+<li>参考链接：<a href="http://www.manongjc.com/detail/17-qacjmzrawplvxxl.html" target="_blank" rel="noopener">http://www.manongjc.com/detail/17-qacjmzrawplvxxl.html</a></li>
+<li>选择配置的是<code>vue-cli4</code>版本的<code>vue</code>项目。</li>
+</ul>
+<ol>
+<li><p>先在项目根目录下创建<code>webpack.dll.conf.js</code>文件，在其中写入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">  <span class="comment">// 自己项目使用的第三方库</span></span><br><span class="line">    vendor: [<span class="string">'axios'</span>, <span class="string">'vue-router'</span>, <span class="string">'jsencrypt'</span>, <span class="string">'vue/dist/vue.esm.js'</span>, <span class="string">'v-charts/lib/pie.common'</span>, <span class="string">'v-charts/lib/histogram.common'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    <span class="comment">// 打包后输入路径，可以自行修改</span></span><br><span class="line">    path: path.join(__dirname, <span class="string">'public/js'</span>),</span><br><span class="line">    filename: <span class="string">'[name].dll.js'</span>,</span><br><span class="line">    library: <span class="string">'[name]_[hash]'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.DllPlugin(&#123;</span><br><span class="line">      <span class="comment">// Tips: DllPlugin的name属性需要和libary保持一致</span></span><br><span class="line">      name: <span class="string">'[name]_[hash]'</span>,</span><br><span class="line">      <span class="comment">//指定当前目录</span></span><br><span class="line">      path: path.join(__dirname, <span class="string">'.'</span>, <span class="string">'[name]-manifest.json'</span>),</span><br><span class="line">      <span class="comment">// context需要和webpack.config.js保持一致</span></span><br><span class="line">      context: __dirname</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着在<code>package.json</code>中加入运行脚本：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dll"</span>: <span class="string">"webpack --config ./webpack.dll.conf.js"</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行刚配置好的脚本<code>npm run dll</code></p>
+<p>注：运行这一步需要下载<code>webpack-cli</code></p>
+</li>
+<li><p>运行完成后就会发现在指定目录下出现了两个新的文件：</p>
+<p><code>vendor-manifest.json</code> ==&gt; 根目录下，表示业务逻辑与库之间的关联</p>
+<p><code>vendor.dll.js</code> ==&gt; <code>public/js/</code>目录下，对库打包好的文件</p>
+<p>分别对应上面在<code>webpack.dll.conf.js</code>文件中<code>output</code>和<code>plugin</code>中的配置。</p>
+</li>
+<li><p>在根目录下新建<code>vue.config.js</code>，在其中加入配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">      <span class="keyword">new</span> webpack.DllReferencePlugin(&#123;</span><br><span class="line">        context: __dirname,</span><br><span class="line">        <span class="comment">// manifest就是我们第2步中打包出来的json文件</span></span><br><span class="line">        manifest: <span class="built_in">require</span>(<span class="string">'./vendor-manifest.json'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>完成！</p>
+</li>
+</ol>
+<h5 id="观察改善效果"><a href="#观察改善效果" class="headerlink" title="观察改善效果"></a>观察改善效果</h5><p>由于我用的这一版<code>vue-cli</code>打包之后没有显示打包用时，我想观察一下优化之后能让我的打包速度快多少，于是结合了上次学习写<code>webpack</code>插件的知识写了一个简单的时间统计插件。</p>
+<p>在项目根目录下新建<code>time.js</code>，其中内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">timeWebpack</span></span>&#123;</span><br><span class="line">    apply(compiler) &#123;</span><br><span class="line">        <span class="keyword">let</span> startTime</span><br><span class="line">        compiler.hooks.entryOption.tap(<span class="string">'timeWebpack'</span>, (compilation, cb) =&gt; &#123;</span><br><span class="line">            startTime = <span class="built_in">Date</span>.now()</span><br><span class="line">        &#125;)</span><br><span class="line">        compiler.hooks.done.tap(<span class="string">'timeWebpack'</span>, (compilation) =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'总共用时'</span>, <span class="built_in">Date</span>.now() - startTime)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = timeWebpack</span><br></pre></td></tr></table></figure>
+
+<p>之后在<code>vue.config.js</code>中引入文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timeWebpack = <span class="built_in">require</span>(<span class="string">'./time'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在<code>plugins</code>配置项中加入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> timeWebpack()</span><br></pre></td></tr></table></figure>
+
+<p>这样打包过后即可得到较为直观的用时数据。</p>
+<p>我改造的这个项目打包过几次的时间对比为：</p>
+<p>优化后：11000-13000</p>
+<p>优化前：16000以上</p>
+<p>不过这个实验结果也受我本身电脑性能（太菜了）与项目规模（比较小）影响，有机会会在稍微大一点的项目上试试看。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/07/23/浏览器（3）——从输入URL到页面展示的过程/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
